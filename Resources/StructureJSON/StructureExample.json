@@ -10,7 +10,9 @@
             "constraints": [
                 {
                     "type": "private",
-                    "occupantIndex": 1
+                    "properties": {
+                        "occupantIndex": 1
+                    }
                 }
             ]
         },
@@ -20,11 +22,15 @@
             "constraints": [
                 {
                     "type": "bedroom",
-                    "weight": 1
+                    "properties": {
+                        "weight": 1
+                    }
                 },
                 {
                     "type": "private",
-                    "occupantIndex": 2
+                    "properties": {
+                        "occupantIndex": 2
+                    }
                 }
             ]
         },
@@ -34,11 +40,15 @@
             "constraints": [
                 {
                     "type": "bedroom",
-                    "weight": 1
+                    "properties": {
+                        "weight": 1
+                    }
                 },
                 {
                     "type": "private",
-                    "occupantIndex": 0
+                    "properties": {
+                        "occupantIndex": 0
+                    }
                 }
             ]
         },
@@ -48,11 +58,15 @@
             "constraints": [
                 {
                     "type": "bathroom",
-                    "weight": 1
+                    "properties": {
+                        "weight": 1
+                    }
                 },
                 {
                     "type": "near-room",
-                    "type-target": "Master Bedroom"
+                    "properties": {
+                        "type-target": "Master Bedroom"
+                    }
                 }
             ]
         },
@@ -62,12 +76,16 @@
             "constraints": [
                 {
                     "type": "common-area",
-                    "weight": 1
+                    "properties": {
+                        "weight": 1
+                    }
                 },
                 {
                     "type": "floor-limit",
-                    "comparision": "<=",
-                    "floor": 1
+                    "properties": {
+                        "comparision": "<=",
+                        "floor": 1
+                    }
                 }
             ]
         },
@@ -77,12 +95,16 @@
             "constraints": [
                 {
                     "type": "common-area",
-                    "weight": 1
+                    "properties": {
+                        "weight": 1
+                    }
                 },
                 {
                     "type": "floor-limit",
-                    "comparision": "<=",
-                    "floor": 1
+                    "properties": {
+                        "comparision": "<=",
+                        "floor": 1
+                    }
                 }
             ]
         },
@@ -92,15 +114,21 @@
             "constraints": [
                 {
                     "type": "common-area",
-                    "weight": 1
+                    "properties": {
+                        "weight": 1
+                    }
                 },
                 {
                     "type": "near-room",
-                    "type-target": "Bedroom 1"
+                    "properties": {
+                        "type-target": "Bedroom 1"
+                    }
                 },
                 {
                     "type": "near-room",
-                    "type-target": "Bedroom 2"
+                    "properties": {
+                        "type-target": "Bedroom 2"
+                    }
                 }
             ]
         }
@@ -112,16 +140,22 @@
             "constraints": [
                 {
                     "type": "common-area",
-                    "weight": 1
+                    "properties": {
+                        "weight": 1
+                    }
                 },
                 {
                     "type": "exterior-edge",
-                    "weight": 1
+                    "properties": {
+                        "weight": 1
+                    }
                 },
                 {
                     "type": "floor-limit",
-                    "comparision": "<=",
-                    "floor": 2
+                    "properties": {
+                        "comparision": "<=",
+                        "floor": 2
+                    }
                 }
             ]
         },
@@ -141,7 +175,9 @@
             "constraints": [
                 {
                     "type": "common-area",
-                    "weight": 1
+                    "properties": {
+                        "weight": 1
+                    }
                 }
             ]
         },
@@ -159,12 +195,16 @@
             "constraints": [
                 {
                     "type": "common-area",
-                    "weight": 1
+                    "properties": {
+                        "weight": 1
+                    }
                 },
                 {
                     "type": "floor-limit",
-                    "comparision": "<=",
-                    "floor": 1
+                    "properties": {
+                        "comparision": "<=",
+                        "floor": 1
+                    }
                 }
             ]
         },
@@ -173,12 +213,16 @@
             "constraints": [
                 {
                     "type": "common-area",
-                    "weight": 1
+                    "properties": {
+                        "weight": 1
+                    }
                 },
                 {
                     "type": "floor-limit",
-                    "comparision": "<=",
-                    "floor": 1
+                    "properties": {
+                        "comparision": "<=",
+                        "floor": 1
+                    }
                 }
             ]
         }
