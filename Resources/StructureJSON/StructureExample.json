@@ -1,0 +1,186 @@
+{
+    "floorData": {
+        "floorCount": 2,
+        "floorHeight": 3
+    },
+    "requiredRooms": [
+        {
+            "name": "Bedroom 1",
+            "baseDefinition": "Bedroom",
+            "constraints": [
+                {
+                    "type": "private",
+                    "occupantIndex": 1
+                }
+            ]
+        },
+        {
+            "name": "Bedroom 2",
+            "baseDefinition": "Bedroom",
+            "constraints": [
+                {
+                    "type": "bedroom",
+                    "weight": 1
+                },
+                {
+                    "type": "private",
+                    "occupantIndex": 2
+                }
+            ]
+        },
+        {
+            "name": "Master Bedroom",
+            "baseDefinition": "Bedroom",
+            "constraints": [
+                {
+                    "type": "bedroom",
+                    "weight": 1
+                },
+                {
+                    "type": "private",
+                    "occupantIndex": 0
+                }
+            ]
+        },
+        {
+            "name": "Master Bathroom",
+            "baseDefinition": "Bathroom",
+            "constraints": [
+                {
+                    "type": "bathroom",
+                    "weight": 1
+                },
+                {
+                    "type": "near-room",
+                    "type-target": "Master Bedroom"
+                }
+            ]
+        },
+        {
+            "name": "Living Room",
+            "baseDefinition": "Living Room",
+            "constraints": [
+                {
+                    "type": "common-area",
+                    "weight": 1
+                },
+                {
+                    "type": "floor-limit",
+                    "comparision": "<=",
+                    "floor": 1
+                }
+            ]
+        },
+        {
+            "name": "Kitchen",
+            "baseDefinition": "Kitchen",
+            "constraints": [
+                {
+                    "type": "common-area",
+                    "weight": 1
+                },
+                {
+                    "type": "floor-limit",
+                    "comparision": "<=",
+                    "floor": 1
+                }
+            ]
+        },
+        {
+            "name": "Bathroom",
+            "baseDefinition": "Bathroom",
+            "constraints": [
+                {
+                    "type": "common-area",
+                    "weight": 1
+                },
+                {
+                    "type": "near-room",
+                    "type-target": "Bedroom 1"
+                },
+                {
+                    "type": "near-room",
+                    "type-target": "Bedroom 2"
+                }
+            ]
+        }
+    ],
+    "optionalRooms": [
+        {
+            "name": "Balcony",
+            "baseDefinition": "Balcony",
+            "constraints": [
+                {
+                    "type": "common-area",
+                    "weight": 1
+                },
+                {
+                    "type": "exterior-edge",
+                    "weight": 1
+                },
+                {
+                    "type": "floor-limit",
+                    "comparision": "<=",
+                    "floor": 2
+                }
+            ]
+        },
+        {
+            "name": "Storage Room",
+            "shapeConstraints": [
+                {
+                    "type": "rectangle",
+                    "minSize": 10,
+                    "maxSize": 20,
+                    "aspectRatio": 1,
+                    "weight": 0.25
+                }
+            ],
+            "minSize": 10,
+            "maxSize": 20,
+            "constraints": [
+                {
+                    "type": "common-area",
+                    "weight": 1
+                }
+            ]
+        },
+        {
+            "name": "Laundry Room",
+            "shapeConstraints": [
+                {
+                    "type": "rectangle",
+                    "minSize": 10,
+                    "maxSize": 20,
+                    "aspectRatio": 1.5,
+                    "weight": 1
+                }
+            ],
+            "constraints": [
+                {
+                    "type": "common-area",
+                    "weight": 1
+                },
+                {
+                    "type": "floor-limit",
+                    "comparision": "<=",
+                    "floor": 1
+                }
+            ]
+        },
+        {
+            "name": "Dining Room",
+            "constraints": [
+                {
+                    "type": "common-area",
+                    "weight": 1
+                },
+                {
+                    "type": "floor-limit",
+                    "comparision": "<=",
+                    "floor": 1
+                }
+            ]
+        }
+    ]
+}

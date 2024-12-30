@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc0cbb505b8b90649a9fdba306057435, type: 3}
+  m_Name: NeedsWindowsConstraint
+  m_EditorClassIdentifier: 
+  constraint:
+    rid: 5123931575457415169
+  references:
+    version: 2
+    RefIds:
+    - rid: 5123931575457415169
+      type: {class: COMConstraint, ns: IDEK.Tools.StructureAnalysis.RoomResolver,
+        asm: IDEK.Tools.StructureAnalysis}
+      data:
+        weight: -1
