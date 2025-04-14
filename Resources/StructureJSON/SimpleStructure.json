@@ -1,0 +1,119 @@
+{
+    "floorData": {
+        "floorCount": 2,
+        "floorHeight": 3
+    },
+    "requiredRooms": [
+        {
+            "name": "Den",
+            "categories": ["living", "downstairs"],
+            "constraints": [
+                {
+                    "type": "com",
+                    "properties": {
+                        "weight": 1
+                    }
+                },
+                {
+                    "type": "min-size",
+                    "properties": {
+                        "weight": 10,
+                        "size": 3
+                    }
+                },
+                {
+                    "type": "max-size",
+                    "properties": {
+                        "weight": 10,
+                        "size": 5
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Living Room",
+            "categories": ["living", "downstairs"],
+            "constraints": [
+                {
+                    "type": "com",
+                    "properties": {
+                        "weight": 2
+                    }
+                },
+                {
+                    "type": "min-size",
+                    "properties": {
+                        "weight": 10,
+                        "size": 3
+                    }
+                },
+                {
+                    "type": "max-size",
+                    "properties": {
+                        "weight": 10,
+                        "size": 10
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Sunroom",
+            "categories": ["living", "downstairs"],
+            "constraints": [
+                {
+                    "type": "window",
+                    "properties": {
+                        "weight": 2
+                    }
+                },
+                {
+                    "type": "min-size",
+                    "properties": {
+                        "weight": 10,
+                        "size": 3
+                    }
+                },
+                {
+                    "type": "max-size",
+                    "properties": {
+                        "weight": 10,
+                        "size": 3
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Kitchen",
+            "categories": ["downstairs"],
+            "constraints": [
+                {
+                    "type": "window",
+                    "properties": {
+                        "weight": 1
+                    }
+                },
+                {
+                    "type": "com",
+                    "properties": {
+                        "weight": 2
+                    }
+                },
+                {
+                    "type": "min-size",
+                    "properties": {
+                        "weight": 10,
+                        "size": 3
+                    }
+                },
+                {
+                    "type": "max-size",
+                    "properties": {
+                        "weight": 10,
+                        "size": 5
+                    }
+                }
+            ]
+        }
+    ],
+    "optionalRooms": [ ]
+}
