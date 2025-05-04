@@ -71,6 +71,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3545049689678357073}
+  - component: {fileID: 8826729810556869312}
+  - component: {fileID: 8439732070046882450}
   m_Layer: 0
   m_Name: BaseWeaponPickup
   m_TagString: Untagged
@@ -95,3 +97,43 @@ Transform:
   - {fileID: 2995630711010380314}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8826729810556869312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6417403459823524458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e25bcebb8ccd40c59453c88d95514161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  representedItem:
+    itemDef: {fileID: 11400000, guid: 94138a2f211c28a4c86ef9c866e84626, type: 2}
+    metadata:
+      rid: -2
+    quantity:
+      raw: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+--- !u!114 &8439732070046882450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6417403459823524458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41e012ba617e74a40b50682d9d00a4d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemComponent: {fileID: 8826729810556869312}
+  destroyOnPickup: 1
+  pickUpEvent:
+    m_PersistentCalls:
+      m_Calls: []
