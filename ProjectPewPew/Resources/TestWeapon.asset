@@ -13,24 +13,24 @@ MonoBehaviour:
   m_Name: TestWeapon
   m_EditorClassIdentifier: 
   data:
-    rid: 8862438760305655808
+    rid: 8862438760305655819
   references:
     version: 2
     RefIds:
-    - rid: 8862438760305655808
+    - rid: 8862438760305655819
       type: {class: ItemDef, ns: IDEK.Tools.GameplayEssentials.Inventory.Core, asm: IDEK.Tools.GameplayEssentials.Inventory}
       data:
         displayName: Test Weapon
-        itemCode: test-weapon-001
+        itemCode: test-weapon
         quantityStrategy:
-          rid: 8862438760305655809
+          rid: 8862438760305655820
         mergingStrategy:
-          rid: 8862438760305655811
-    - rid: 8862438760305655809
+          rid: 8862438760305655821
+    - rid: 8862438760305655820
       type: {class: WholeIntStrategy, ns: IDEK.Tools.GameplayEssentials.Inventory.Core.Quantities,
         asm: IDEK.Tools.GameplayEssentials.Inventory}
       data: 
-    - rid: 8862438760305655811
+    - rid: 8862438760305655821
       type: {class: UnrestrictedMergingStrategy, ns: IDEK.Tools.GameplayEssentials.Inventory.Core.Quantities.Merging,
         asm: IDEK.Tools.GameplayEssentials.Inventory}
       data: 
