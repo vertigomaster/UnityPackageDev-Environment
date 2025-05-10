@@ -4896,7 +4896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40fa2feda3542fdb81b3574eac66285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 2857684095831048311}
+  owner: {fileID: 2857684095831048311}
 --- !u!1 &8221556736044655540
 GameObject:
   m_ObjectHideFlags: 0
@@ -5159,6 +5159,111 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TestWeaponWeaponPickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 8826729810556869312, guid: 201b0741de9833641910c5b9440a93b0,
+        type: 3}
+      propertyPath: representedItem.metadata
+      value: 8862438882893103132
+      objectReference: {fileID: 0}
+    - target: {fileID: 8826729810556869312, guid: 201b0741de9833641910c5b9440a93b0,
+        type: 3}
+      propertyPath: managedReferences[8862438882893103130]
+      value: IDEK.Tools.GameplayEssentials.Items IDEK.Tools.GameplayEssentials.Items.MetadataComposite
+      objectReference: {fileID: 0}
+    - target: {fileID: 8826729810556869312, guid: 201b0741de9833641910c5b9440a93b0,
+        type: 3}
+      propertyPath: managedReferences[8862438882893103131]
+      value: IDEK.Tools.GameplayEssentials.Equipment IDEK.Tools.GameplayEssentials.Equipment.Samples.BaseEquipmentMetadata
+      objectReference: {fileID: 0}
+    - target: {fileID: 8826729810556869312, guid: 201b0741de9833641910c5b9440a93b0,
+        type: 3}
+      propertyPath: managedReferences[8862438882893103132]
+      value: IDEK.Tools.GameplayEssentials.Items IDEK.Tools.GameplayEssentials.Items.MetadataComposite
+      objectReference: {fileID: 0}
+    - target: {fileID: 8826729810556869312, guid: 201b0741de9833641910c5b9440a93b0,
+        type: 3}
+      propertyPath: managedReferences[8862438882893103133]
+      value: IDEK.Tools.GameplayEssentials.Equipment IDEK.Tools.GameplayEssentials.Equipment.Samples.BaseEquipmentMetadata
+      objectReference: {fileID: 0}
+    - target: {fileID: 8826729810556869312, guid: 201b0741de9833641910c5b9440a93b0,
+        type: 3}
+      propertyPath: managedReferences[8862438882893103134]
+      value: IDEK.Tools.GameplayEssentials.Items IDEK.Tools.GameplayEssentials.Items.MetadataComposite
+      objectReference: {fileID: 0}
+    - target: {fileID: 8826729810556869312, guid: 201b0741de9833641910c5b9440a93b0,
+        type: 3}
+      propertyPath: managedReferences[8862438882893103135]
+      value: IDEK.Tools.GameplayEssentials.Items IDEK.Tools.GameplayEssentials.Items.MetadataComposite
+      objectReference: {fileID: 0}
+    - target: {fileID: 8826729810556869312, guid: 201b0741de9833641910c5b9440a93b0,
+        type: 3}
+      propertyPath: managedReferences[8862438882893103133].equippedPrefab
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8826729810556869312, guid: 201b0741de9833641910c5b9440a93b0,
+        type: 3}
+      propertyPath: managedReferences[8862438882893103132].testList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8826729810556869312, guid: 201b0741de9833641910c5b9440a93b0,
+        type: 3}
+      propertyPath: managedReferences[8862438882893103134].testList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8826729810556869312, guid: 201b0741de9833641910c5b9440a93b0,
+        type: 3}
+      propertyPath: managedReferences[8862438882893103135].testList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8826729810556869312, guid: 201b0741de9833641910c5b9440a93b0,
+        type: 3}
+      propertyPath: managedReferences[8862438882893103131].categories.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8826729810556869312, guid: 201b0741de9833641910c5b9440a93b0,
+        type: 3}
+      propertyPath: managedReferences[8862438882893103133].categories.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8826729810556869312, guid: 201b0741de9833641910c5b9440a93b0,
+        type: 3}
+      propertyPath: managedReferences[8862438882893103132]._components.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8826729810556869312, guid: 201b0741de9833641910c5b9440a93b0,
+        type: 3}
+      propertyPath: managedReferences[8862438882893103134]._components.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8826729810556869312, guid: 201b0741de9833641910c5b9440a93b0,
+        type: 3}
+      propertyPath: managedReferences[8862438882893103135]._components.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8826729810556869312, guid: 201b0741de9833641910c5b9440a93b0,
+        type: 3}
+      propertyPath: managedReferences[8862438882893103132]._components.Array.data[0]
+      value: 8862438882893103133
+      objectReference: {fileID: 0}
+    - target: {fileID: 8826729810556869312, guid: 201b0741de9833641910c5b9440a93b0,
+        type: 3}
+      propertyPath: managedReferences[8862438882893103132]._components.Array.data[1]
+      value: 8862438882893103134
+      objectReference: {fileID: 0}
+    - target: {fileID: 8826729810556869312, guid: 201b0741de9833641910c5b9440a93b0,
+        type: 3}
+      propertyPath: managedReferences[8862438882893103134]._components.Array.data[0]
+      value: 8862438882893103135
+      objectReference: {fileID: 0}
+    - target: {fileID: 8826729810556869312, guid: 201b0741de9833641910c5b9440a93b0,
+        type: 3}
+      propertyPath: managedReferences[8862438882893103131].licenseConstraints.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8826729810556869312, guid: 201b0741de9833641910c5b9440a93b0,
+        type: 3}
+      propertyPath: managedReferences[8862438882893103133].licenseConstraints.Array.size
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8439732070046882450, guid: 201b0741de9833641910c5b9440a93b0, type: 3}
