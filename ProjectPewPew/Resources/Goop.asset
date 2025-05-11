@@ -12,25 +12,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e92ed5b2b1a74467813ffa6eed26f137, type: 3}
   m_Name: Goop
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
   data:
-    rid: 8862438760305655808
+    displayName: 
+    itemCode: 
+    globalMetadata:
+      rid: -2
+    quantityStrategy:
+      rid: 8862438882893103360
+    mergingStrategy:
+      rid: 8862438882893103361
+    itemSpawnHandler:
+      rid: 8862438882893103362
+    _categories: []
   references:
     version: 2
     RefIds:
-    - rid: 8862438760305655808
-      type: {class: ItemDef, ns: IDEK.Tools.GameplayEssentials.Inventory.Core, asm: IDEK.Tools.GameplayEssentials.Inventory}
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 8862438882893103360
+      type: {class: WholeIntStrategy, ns: IDEK.Tools.GameplayEssentials.Quantities,
+        asm: IDEK.Tools.GameplayEssentials}
+      data: 
+    - rid: 8862438882893103361
+      type: {class: UnrestrictedMergingStrategy, ns: IDEK.Tools.GameplayEssentials.Items.StackMerging,
+        asm: IDEK.Tools.GameplayEssentials}
+      data: 
+    - rid: 8862438882893103362
+      type: {class: SingleItemSpawnHandler, ns: IDEK.Tools.GameplayEssentials.Items.Unity,
+        asm: IDEK.Tools.GameplayEssentials}
       data:
-        displayName: Goop
-        itemCode: goop-liquid
-        quantityStrategy:
-          rid: 8862438760305655812
-        mergingStrategy:
-          rid: 8862438760305655811
-    - rid: 8862438760305655811
-      type: {class: UnrestrictedMergingStrategy, ns: IDEK.Tools.GameplayEssentials.Inventory.Core.Quantities.Merging,
-        asm: IDEK.Tools.GameplayEssentials.Inventory}
-      data: 
-    - rid: 8862438760305655812
-      type: {class: FixedPoint3DecimalStrategy, ns: IDEK.Tools.GameplayEssentials.Inventory.Core.Quantities,
-        asm: IDEK.Tools.GameplayEssentials.Inventory}
-      data: 
+        prefab: {fileID: 0}

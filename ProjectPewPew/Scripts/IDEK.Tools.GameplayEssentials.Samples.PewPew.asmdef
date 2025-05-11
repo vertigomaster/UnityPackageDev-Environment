@@ -1,0 +1,24 @@
+{
+    "name": "IDEK.Tools.GameplayEssentials.Samples.PewPew",
+    "rootNamespace": "IDEK.Tools.GameplayEssentials.Samples.PewPew",
+    "references": [
+        "IDEK.Tools.GameplayEssentials.Equipment",
+        "IDEK.Tools.ShocktroopUtils",
+        "IDEK.Tools.GameplayEssentials.Items",
+        "IDEK.Tools.GameplayEssentials.Inventory",
+        "IDEK.Tools.GameplayEssentials.Characters",
+        "Unity.InputSystem",
+        "IDEK.Tools.GameplayEssentials",
+        "IDEK.Tools.GameplayEssentials.Conflict",
+        "IDEK.Tools.Coroutines.TaskRoutines"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

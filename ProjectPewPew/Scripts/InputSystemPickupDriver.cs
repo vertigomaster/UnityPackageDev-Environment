@@ -1,9 +1,10 @@
-﻿using IDEK.Tools.Logging;
+﻿using IDEK.Tools.GameplayEssentials.Interaction;
+using IDEK.Tools.Logging;
 using IDEK.Tools.ShocktroopExtensions;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace IDEK.Tools.GameplayEssentials.Interaction.Samples.Unity
+namespace IDEK.Tools.GameplayEssentials.Samples.PewPew
 {
     //Sample showing how to use the InputSystem to drive a GameplayEssentials Interaction agent.
     public class InputSystemPickupDriver : PickupDriver

@@ -122,6 +122,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &218613614 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7659644343095583526, guid: af462a796aa00a34488d69494c8a0be2,
+    type: 3}
+  m_PrefabInstance: {fileID: 2724128708521636298}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 793b002292c84f19901d8e3a6409fd48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &300122333
 GameObject:
   m_ObjectHideFlags: 0
@@ -725,6 +737,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1116641293}
   - component: {fileID: 1116641291}
+  - component: {fileID: 1116641294}
   - component: {fileID: 1116641292}
   m_Layer: 0
   m_Name: '[CharacterState] GordonState'
@@ -783,6 +796,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1116641294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116641290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc48918688ec493aab23b9e63eeeae15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotManager: {fileID: 218613614}
+  _ourInventory: {fileID: 1116641292}
 --- !u!1 &1648350000 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3109693938204132652, guid: af462a796aa00a34488d69494c8a0be2,
@@ -813,9 +840,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31ca22a5b10c4609b9c97cd707cd0ad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 1648350002}
   interactAction: {fileID: 1781555164194001046, guid: a74092ff21d940944b7c56a21f02f6c2,
     type: 3}
-  agent: {fileID: 1648350002}
 --- !u!1001 &2045955529
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1143,12 +1170,22 @@ PrefabInstance:
         type: 3}
       propertyPath: owner
       value: 
-      objectReference: {fileID: 1116641291}
+      objectReference: {fileID: 1116641290}
     - target: {fileID: 1088619029940158169, guid: af462a796aa00a34488d69494c8a0be2,
         type: 3}
       propertyPath: m_Name
       value: '[Avatar] Gordon'
       objectReference: {fileID: 0}
+    - target: {fileID: 4104864676985706508, guid: af462a796aa00a34488d69494c8a0be2,
+        type: 3}
+      propertyPath: slotManager
+      value: 
+      objectReference: {fileID: 218613614}
+    - target: {fileID: 4104864676985706508, guid: af462a796aa00a34488d69494c8a0be2,
+        type: 3}
+      propertyPath: _ourInventory
+      value: 
+      objectReference: {fileID: 1116641292}
     - target: {fileID: 4192451714333838449, guid: af462a796aa00a34488d69494c8a0be2,
         type: 3}
       propertyPath: m_LocalPosition.x

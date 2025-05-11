@@ -25,13 +25,14 @@ MonoBehaviour:
     displayName: Test Gun
     itemCode: test-gun
     globalMetadata:
-      rid: 8862438882893103325
+      rid: 8862438882893103481
     quantityStrategy:
       rid: 8862438882893103322
     mergingStrategy:
       rid: 8862438882893103323
     itemSpawnHandler:
       rid: 8862438882893103324
+    _categories: []
   references:
     version: 2
     RefIds:
@@ -41,25 +42,23 @@ MonoBehaviour:
       data: 
     - rid: 8862438882893103323
       type: {class: UnrestrictedMergingStrategy, ns: IDEK.Tools.GameplayEssentials.Items.StackMerging,
-        asm: IDEK.Tools.GameplayEssentials.Items}
+        asm: IDEK.Tools.GameplayEssentials}
       data: 
     - rid: 8862438882893103324
       type: {class: SingleItemSpawnHandler, ns: IDEK.Tools.GameplayEssentials.Items.Unity,
-        asm: IDEK.Tools.GameplayEssentials.Items}
+        asm: IDEK.Tools.GameplayEssentials}
       data:
         prefab: {fileID: 2857684095831048311, guid: e589d6dbc9ef03149865db51751e31a9,
           type: 3}
-    - rid: 8862438882893103325
-      type: {class: MetadataComposite, ns: IDEK.Tools.GameplayEssentials.Items, asm: IDEK.Tools.GameplayEssentials.Items}
+    - rid: 8862438882893103481
+      type: {class: MetadataComposite, ns: IDEK.Tools.GameplayEssentials.Items, asm: IDEK.Tools.GameplayEssentials}
       data:
         _components:
-        - rid: 8862438882893103326
-    - rid: 8862438882893103326
+        - rid: 8862438882893103482
+    - rid: 8862438882893103482
       type: {class: BaseEquipmentMetadata, ns: IDEK.Tools.GameplayEssentials.Equipment.Samples,
         asm: IDEK.Tools.GameplayEssentials.Equipment}
       data:
-        categories:
-        - {fileID: 11400000, guid: 799de001640ce564cb61be63872e9da6, type: 2}
         licenseConstraints: []
-        equippedPrefab: {fileID: 1817074804237822066, guid: 6664ad2bdbe0ce2448d7e4168aad6d3d,
+        <EquippedPrefab>k__BackingField: {fileID: 1817074804237822066, guid: 6664ad2bdbe0ce2448d7e4168aad6d3d,
           type: 3}
