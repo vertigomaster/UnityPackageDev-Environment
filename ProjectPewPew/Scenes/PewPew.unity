@@ -809,6 +809,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotManager: {fileID: 218613614}
+  toolActivationInput: {fileID: 1120369429361536294, guid: a74092ff21d940944b7c56a21f02f6c2,
+    type: 3}
   _ourInventory: {fileID: 1116641292}
 --- !u!1 &1648350000 stripped
 GameObject:
