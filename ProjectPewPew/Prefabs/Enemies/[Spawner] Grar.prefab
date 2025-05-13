@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 596218222752169450}
   - component: {fileID: 8600901845768096658}
+  - component: {fileID: 8757903404802963175}
+  - component: {fileID: 5726409206300459019}
   m_Layer: 0
   m_Name: '[Spawner] Grar'
   m_TagString: Untagged
@@ -46,3 +48,59 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thingToSpawn: {fileID: 7386206956498823317, guid: b015454f879804a4f9a911dc8975fe80,
     type: 3}
+--- !u!114 &8757903404802963175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926497451650549606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b2ace5d1e954c759f0fab6fff9a4d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ticker:
+    tickEveryFrame: 0
+    _tickTime: 10
+  onTick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5726409206300459019}
+        m_TargetAssemblyTypeName: UltEvents.UltEventHolder, Kybernetik.UltEvents
+        m_MethodName: Invoke
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5726409206300459019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926497451650549606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 289ff940279d54e4e92f632d7d3823dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Event:
+    _PersistentCalls:
+    - _Target: {fileID: 8600901845768096658}
+      _MemberName: TriggerSpawn
+      _PersistentArguments:
+      - _Type: 13
+        _Int: 0
+        _String: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 596218222752169450}
