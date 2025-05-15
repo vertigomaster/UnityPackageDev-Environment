@@ -69,35 +69,33 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew
                 projectileData.AddAdditionalDamage(baseDamage);
                 projectileData.OverrideRangeConfig(rangeConfig);
             }
-            
-            // if (!Physics.Raycast(
-            //         MuzzleSocket.position,
-            //         MuzzleSocket.forward,
-            //         out RaycastHit hit,
-            //         rangeConfig.MaxRange))
-            // {
-            //     ConsoleLog.Log($"fooble - raycast hit nothing.");
-            //
-            //     return;
-            // }
-
-            // DrawLineRenderer(hit);
         }
-        
-// #if ODIN_INSPECTOR
-//         [Sirenix.OdinInspector.Button]
-// #endif
-//         private void DrawLineRenderer(RaycastHit hit)
-//         {
-//             raycastLine.enabled = true;
-//             
-//             positions[0] = MuzzleSocket.position;
-//             positions[1] = hit.point;
-//             Vector3 reflectedRichochet = Vector3.Reflect(MuzzleSocket.forward, hit.normal);
-//             positions[2] = positions[1] + reflectedRichochet * 100;
-//             raycastLine.SetPositions(positions);
-//
-//             TaskRoutine.Delay(0.5f, () => raycastLine.enabled = false);
-//         }
+
+        #region Overrides of BaseGun
+
+        /// <inheritdoc />
+        protected override void UpdateTargetCache()
+        {
+            if (Physics.Raycast(
+                MuzzleSocket.position,
+                MuzzleSocket.forward,
+                out RaycastHit hit,
+                rangeConfig.MaxRange))
+            {
+                ExpectedTarget.position = hit.point;
+                ExpectedTarget.rotation = Quaternion.LookRotation(hit.normal);
+                
+                TargetingInfoCache.UpdateTarget(hit.collider.gameObject);
+            }
+            else
+            {
+                ExpectedTarget.position = MuzzleSocket.position + MuzzleSocket.forward * rangeConfig.MaxRange;
+                ExpectedTarget.rotation = Quaternion.LookRotation(MuzzleSocket.forward);
+
+                TargetingInfoCache.ClearTarget();
+            }
+        }
+
+        #endregion
     }
 }
