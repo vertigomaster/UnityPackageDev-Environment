@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51dfdc00edd517542b94c6c6d071bb65, type: 3}
-  m_Name: Wave01
+  m_Name: Wave - Stem The Pipe Flow
   m_EditorClassIdentifier: 
-  waveTime: 0
-  prefabsToSpawn: []
+  waveTime: Infinity
+  prefabsToSpawn:
+  - {fileID: 4873567306660109129, guid: b0ec6a7ad2cbcff4db37c45fa2060b6a, type: 3}

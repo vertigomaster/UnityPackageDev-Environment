@@ -162,6 +162,7 @@ GameObject:
   - component: {fileID: 4564480567179337655}
   - component: {fileID: 8031305048545962237}
   - component: {fileID: 2886903980196117773}
+  - component: {fileID: 8728021807749033414}
   m_Layer: 0
   m_Name: LivingLogic
   m_TagString: Untagged
@@ -216,6 +217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ticker:
     tickEveryFrame: 0
+    staggerDelay: 0
     _tickTime: 0.1
   gizmoVisibility: 0.75
   target: {fileID: 0}
@@ -233,10 +235,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ticker:
     tickEveryFrame: 0
+    staggerDelay: 0
     _tickTime: 1
   body: {fileID: 4656127504459407063}
   forceTwitchMagnitude: {x: 1, y: 2.5, z: 1}
   torqueTwitchMagnitude: {x: 5, y: 1, z: 5}
+--- !u!114 &8728021807749033414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4881931079068816990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f7d7b50a299a344a3fc81ac30d8fae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7386206956498823317
 GameObject:
   m_ObjectHideFlags: 0

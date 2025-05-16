@@ -55,7 +55,8 @@ MonoBehaviour:
   - {fileID: 5573358406357014436}
   - {fileID: 667718976845877608}
   - {fileID: 352840940211487392}
-  minimumMembersRemainingToCountAsCleared: 5
+  minimumMembersRemainingToCountAsCleared: 3
+  maxCapacity: 100
 --- !u!1001 &3031133302799889301
 PrefabInstance:
   m_ObjectHideFlags: 0
