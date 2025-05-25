@@ -83,7 +83,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 436030779466747438}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.6600001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -108,12 +108,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ExcludedPropertiesInInspector:
-  - m_Script
-  m_LockStageInInspector: 
-  m_StreamingVersion: 20170927
-  m_Priority: 10
-  m_StandbyUpdate: 2
+  Priority:
+    Enabled: 1
+    m_Value: 10
+  OutputChannel: 1
+  StandbyUpdate: 2
+  m_StreamingVersion: 20241001
+  m_LegacyPriority: 0
   m_LookAt: {fileID: 4101304743498760223}
   m_Follow: {fileID: 4101304743498760223}
   m_Lens:
@@ -123,17 +124,30 @@ MonoBehaviour:
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
-    LensShift: {x: 0, y: 0}
     GateFit: 2
-    FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
-  m_Transitions:
+    LensShift: {x: 0, y: 0}
+    FocusDistance: 10
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
+  BlendHint: 0
+  m_OnCameraLiveEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ExcludedPropertiesInInspector:
+  - m_Script
+  m_LockStageInInspector: 
+  m_LegacyTransitions:
     m_BlendHint: 0
     m_InheritPosition: 0
     m_OnCameraLive:
       m_PersistentCalls:
         m_Calls: []
-  m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 3233932175837138363}
 --- !u!114 &6649198236244751824
 MonoBehaviour:
@@ -303,7 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40fa2feda3542fdb81b3574eac66285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  owner: {fileID: 1088619029940158169}
+  _owner: {fileID: 1088619029940158169}
 --- !u!1 &727219894474305621
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,6 +377,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -400,7 +417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40fa2feda3542fdb81b3574eac66285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  owner: {fileID: 1088619029940158169}
+  _owner: {fileID: 1088619029940158169}
 --- !u!1 &1088619029940158169
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,7 +499,6 @@ CharacterController:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -505,7 +521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1938bb06f34c47ffabaa62328d83484e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  owner: {fileID: 0}
+  _owner: {fileID: 0}
 --- !u!114 &7659644343095583526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -651,6 +667,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -735,6 +754,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -849,7 +871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40fa2feda3542fdb81b3574eac66285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  owner: {fileID: 1088619029940158169}
+  _owner: {fileID: 1088619029940158169}
 --- !u!114 &6457413965889763840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -986,11 +1008,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_NoiseProfile: {fileID: 11400000, guid: 46965f9cbaf525742a6da4c2172a99cd, type: 2}
-  m_PivotOffset: {x: 0, y: 0, z: 0}
-  m_AmplitudeGain: 0.2
-  m_FrequencyGain: 1
-  mNoiseOffsets: {x: 491.84344, y: 358.53622, z: 457.57886}
+  NoiseProfile: {fileID: 11400000, guid: 46965f9cbaf525742a6da4c2172a99cd, type: 2}
+  PivotOffset: {x: 0, y: 0, z: 0}
+  AmplitudeGain: 0.2
+  FrequencyGain: 1
+  m_NoiseOffsets: {x: 491.84344, y: 358.53622, z: 457.57886}
 --- !u!114 &6803526690763334971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1003,7 +1025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36d1163fa822e8b418a0a603ec078d5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Damping: 0
+  Damping: 0
 --- !u!1 &3822513624408176354
 GameObject:
   m_ObjectHideFlags: 0
@@ -1063,6 +1085,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1168,6 +1193,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1364,6 +1392,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1506,7 +1537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40fa2feda3542fdb81b3574eac66285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  owner: {fileID: 1088619029940158169}
+  _owner: {fileID: 1088619029940158169}
 --- !u!1 &5581763965196573347
 GameObject:
   m_ObjectHideFlags: 0
@@ -1614,7 +1645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40fa2feda3542fdb81b3574eac66285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  owner: {fileID: 1088619029940158169}
+  _owner: {fileID: 1088619029940158169}
 --- !u!114 &3020044458596021807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1693,7 +1724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40fa2feda3542fdb81b3574eac66285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  owner: {fileID: 1088619029940158169}
+  _owner: {fileID: 1088619029940158169}
 --- !u!114 &4360161768089472613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1784,6 +1815,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1870,6 +1904,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2002,6 +2039,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
