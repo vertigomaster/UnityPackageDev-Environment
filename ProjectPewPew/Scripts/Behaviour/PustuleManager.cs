@@ -14,6 +14,9 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew
     {
         public Vector2 scaleRange = new Vector2(0.8f, 1.25f);
 
+        public bool usePercentageOfCount = false;
+        public bool reshufflePustuleSpawnOrder = true;
+        
         /// <summary>
         /// noramlized on time and value. Given the percentage of pustules spawned so far, 
         /// it returns the probability of spawning another pustule.
@@ -23,6 +26,7 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew
         /// This is used to determine the probability of a pustule spawning.
         /// The idea being that as we spawn more pustules, the probability of spawning another one changes in accordance with the curve.
         /// </remarks>
+        [SerializeField]
         public ProbabilityCurve spawnCountProbability;
 
         public List<Transform> pustules;
@@ -33,7 +37,9 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew
             if (pustules.Count != 0) return;
             pustules = gameObject.GetComponentsInDirectChildren<Transform>(
                 includeSelf: false, includeInactive: true).ToList();
-            
+
+            if (usePercentageOfCount) spawnCountProbability.NormalizeInputs();
+
         }
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -50,6 +56,7 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew
             RollScaleFactor();
             RollEnabledToggles();
         }
+        
 #if ODIN_INSPECTOR
         [Sirenix.OdinInspector.Button, HorizontalGroup("Sub Rolls")]
 #endif
@@ -66,11 +73,18 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew
 #endif
         protected void RollEnabledToggles()
         {
+            if (reshufflePustuleSpawnOrder)
+            {
+                pustules.Shuffle();
+            }
+            
             bool allowedToSpawn = true;
             bool shouldEnable;
             for (int i = 0; i < pustules.Count; i++)
             {
-                shouldEnable = !allowedToSpawn || !spawnCountProbability.RollToHit(i);
+                float evalPoint = usePercentageOfCount ? (float)i / pustules.Count : i;
+                
+                shouldEnable = allowedToSpawn && spawnCountProbability.RollToHit(evalPoint);
                 if (!shouldEnable) allowedToSpawn = false; //once we fail a roll, it's game over.
                 
                 pustules[i].gameObject.SetActive(shouldEnable);
