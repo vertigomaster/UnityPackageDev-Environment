@@ -10,7 +10,8 @@
         "Unity.InputSystem",
         "IDEK.Tools.GameplayEssentials",
         "IDEK.Tools.GameplayEssentials.Conflict",
-        "IDEK.Tools.Coroutines.TaskRoutines"
+        "IDEK.Tools.Coroutines.TaskRoutines",
+        "IDEK.Tools.Spawnables"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

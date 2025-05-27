@@ -432,8 +432,9 @@ GameObject:
   - component: {fileID: 152411880488215235}
   - component: {fileID: 7659644343095583526}
   - component: {fileID: 5305911163119194916}
+  - component: {fileID: 7614422302676695837}
   m_Layer: 6
-  m_Name: Gordon
+  m_Name: '[Avatar] Gordon'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -552,6 +553,26 @@ MonoBehaviour:
   nickname: Offhand Tool (Dual Wielding)
   equipmentSlots:
   - {fileID: 3020044458596021807}
+--- !u!114 &7614422302676695837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088619029940158169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15919e8935a24eceac9f1839d6f1c766, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <MaxHealth>k__BackingField: 100
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  OnKilled:
+    m_PersistentCalls:
+      m_Calls: []
+  <Killed>k__BackingField: 0
 --- !u!1 &1502997166760434827
 GameObject:
   m_ObjectHideFlags: 0
@@ -1485,7 +1506,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4849395554024049279}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2479e6da67184f688b5262eed405b22e, type: 3}
   m_Name: 

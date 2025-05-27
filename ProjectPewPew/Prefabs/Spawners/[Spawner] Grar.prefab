@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 596218222752169450}
-  - component: {fileID: 8600901845768096658}
+  - component: {fileID: 2751970646007071087}
   - component: {fileID: 8757903404802963175}
   - component: {fileID: 5726409206300459019}
   m_Layer: 0
@@ -34,7 +34,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8600901845768096658
+--- !u!114 &2751970646007071087
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,11 +43,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1926497451650549606}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9068a2291f1d5c143bb8ac6d00bb70f5, type: 3}
+  m_Script: {fileID: 11500000, guid: 56088dffd28ea0549b4930d21c9f7316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thingToSpawn: {fileID: 7386206956498823317, guid: b015454f879804a4f9a911dc8975fe80,
-    type: 3}
+  onSpawned:
+    m_PersistentCalls:
+      m_Calls: []
+  spawnPoolData: {fileID: 11400000, guid: 9aa37a178a3d76745937951399f064ee, type: 2}
 --- !u!114 &8757903404802963175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,6 +64,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ticker:
     tickEveryFrame: 0
+    staggerDelay: 0
     _tickTime: 10
   onTick:
     m_PersistentCalls:
@@ -92,7 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Event:
     _PersistentCalls:
-    - _Target: {fileID: 8600901845768096658}
+    - _Target: {fileID: 2751970646007071087}
       _MemberName: TriggerSpawn
       _PersistentArguments:
       - _Type: 13
