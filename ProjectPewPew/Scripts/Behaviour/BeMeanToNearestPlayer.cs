@@ -47,7 +47,7 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew
                 return;
             }
             
-            ConsoleLog.Log($"I found a CharacterAvatar! His name is {closestAvatar.name}. I'm gonna kick your ass, {closestAvatar.name}!");
+            // ConsoleLog.Log($"I found a CharacterAvatar! His name is {closestAvatar.name}. I'm gonna kick your ass, {closestAvatar.name}!");
             
             targeter.target = closestAvatar.transform;
         }

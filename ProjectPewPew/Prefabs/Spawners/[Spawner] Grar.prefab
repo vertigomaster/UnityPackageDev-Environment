@@ -49,7 +49,7 @@ MonoBehaviour:
   onSpawned:
     m_PersistentCalls:
       m_Calls: []
-  spawnPoolData: {fileID: 11400000, guid: 9aa37a178a3d76745937951399f064ee, type: 2}
+  spawnPoolData: {fileID: 11400000, guid: 9e7ef06b94c50bb49beea55f1c3940da, type: 2}
 --- !u!114 &8757903404802963175
 MonoBehaviour:
   m_ObjectHideFlags: 0

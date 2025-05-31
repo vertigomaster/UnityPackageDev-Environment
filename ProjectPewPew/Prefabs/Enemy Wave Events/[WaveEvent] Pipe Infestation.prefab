@@ -55,8 +55,8 @@ MonoBehaviour:
   - {fileID: 2032521877629918553}
   - {fileID: 6352409528299953045}
   - {fileID: 6163729037652576349}
-  minimumMembersRemainingToCountAsCleared: 3
-  maxCapacity: 100
+  minimumMembersRemainingToCountAsCleared: 0
+  maxCapacity: 20
 --- !u!1001 &3031133302799889301
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -139,7 +139,7 @@ PrefabInstance:
     - target: {fileID: 8757903404802963175, guid: fb0efcfdb3c8329479db20ba61853935,
         type: 3}
       propertyPath: ticker.staggerDelay
-      value: 0.1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -246,7 +246,7 @@ PrefabInstance:
     - target: {fileID: 8757903404802963175, guid: fb0efcfdb3c8329479db20ba61853935,
         type: 3}
       propertyPath: ticker.staggerDelay
-      value: 0.2
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -450,7 +450,7 @@ PrefabInstance:
     - target: {fileID: 8757903404802963175, guid: fb0efcfdb3c8329479db20ba61853935,
         type: 3}
       propertyPath: ticker.staggerDelay
-      value: 0.4
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -557,7 +557,7 @@ PrefabInstance:
     - target: {fileID: 8757903404802963175, guid: fb0efcfdb3c8329479db20ba61853935,
         type: 3}
       propertyPath: ticker.staggerDelay
-      value: 0.3
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

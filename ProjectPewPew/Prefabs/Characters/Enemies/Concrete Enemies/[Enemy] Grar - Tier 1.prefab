@@ -1025,7 +1025,7 @@ PrefabInstance:
     - target: {fileID: 5101173572009682956, guid: 2ddd702ff2ffa2244a27b25aff072cf8,
         type: 3}
       propertyPath: m_Name
-      value: '[Enemy] Tier 1 Grar'
+      value: '[Enemy] Grar - Tier 1'
       objectReference: {fileID: 0}
     - target: {fileID: 6721948810702061713, guid: 2ddd702ff2ffa2244a27b25aff072cf8,
         type: 3}
