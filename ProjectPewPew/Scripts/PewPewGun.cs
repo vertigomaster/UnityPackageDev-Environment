@@ -24,7 +24,12 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew
         public float LastShotTime { get; protected set; } = 0.0f;
 
         //TODO: damage scaling table
+#if ODIN_INSPECTOR
+        [Sirenix.OdinInspector.EnableIf("@baseDamageSpec == null")]
+#endif
         public float baseDamage = 10f;
+
+        public DamageApplicationSpec baseDamageSpec;
         
         [Obsolete("moved onto the bullet prefab. Just select a hitscan one.")]
         public LineRenderer raycastLine;
@@ -64,11 +69,14 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew
         private void Shoot()
         {
             var bullet = Instantiate(bulletPrefab, MuzzleSocket.position, MuzzleSocket.rotation);
-            if (bullet.TryGetComponent(out Projectile projectileData))
-            {
+            if (!bullet.TryGetComponent(out Projectile projectileData)) return;
+            
+            if (baseDamageSpec != null)
+                projectileData.AddAdditionalDamage(baseDamageSpec.Apply());
+            else 
                 projectileData.AddAdditionalDamage(baseDamage);
-                projectileData.OverrideRangeConfig(rangeConfig);
-            }
+
+            projectileData.OverrideRangeConfig(rangeConfig);
         }
 
         #region Overrides of BaseGun
