@@ -1,4 +1,5 @@
-﻿using IDEK.Tools.GameplayEssentials.Characters.Unity;
+﻿using IDEK.Tools.Coroutines.TaskRoutines;
+using IDEK.Tools.GameplayEssentials.Characters.Unity;
 using IDEK.Tools.GameplayEssentials.Equipment;
 using IDEK.Tools.GameplayEssentials.Equipment.Samples;
 using IDEK.Tools.GameplayEssentials.Interaction.Unity;
@@ -37,6 +38,12 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew
 #endif
         public BasicVisibleEquipmentSlotManager slotManager;
         public InputActionReference toolActivationInput;
+        [Tooltip("Optional field for a separate input to use for detecting the end of a firing action " +
+                 "(mostly used for repeatedly trying to fire a weapon when an input is held down, " +
+                 "in which case the release input could be a button event bound to the same inputs " +
+                 "but which waits for a release instead of a press.")]
+        // )]
+        public InputActionReference toolReleaseInput;
         
 #if ODIN_INSPECTOR
         [Sirenix.OdinInspector.ShowInInspector, Sirenix.OdinInspector.ReadOnly]
@@ -72,6 +79,7 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew
             }
 
             toolActivationInput.action.performed += OnActivationInput;
+            // toolActivationInput.action.IsPressed()
         }
 
         [OverridesMustCallBase]
@@ -116,7 +124,8 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew
             //do we not have something equipped?
             if(!TryEquip(inv, change))
             {
-                ConsoleLog.Log("fooble - Failed to equip the item from this change. Resume listening to see if the next one will work.");
+                ConsoleLog.Log("fooble - Failed to equip the item from this change. " +
+                               "Resume listening to see if the next one will work.");
                 //Failed to equip the item from this change.
                 //Resume listening to see if the next one will work.
                 _ourInventory.Runtime.OnInventoryChanged.TryAddListener(OnInvChangeTryEquip_Internal); 
@@ -160,9 +169,4 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew
                 equipmentMetadata);
         }
     }
-
-    // public record EquippableToolMetadata : BaseEquipmentMetadata
-    // {
-    //     public GameObject prefab;
-    // }
 }

@@ -12,6 +12,7 @@ using IDEK.Tools.ShocktroopUtils;
 using IDEK.Tools.ShocktroopUtils.Attributes;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace IDEK.Tools.GameplayEssentials.Samples.PewPew
 {
@@ -37,6 +38,9 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew
 
         private Vector3[] positions = new Vector3[3];
 
+        public UnityEvent onWeaponFire;
+        // public UnityEvent onWeaponReadyToFire;
+
         #region Overrides of BaseTool
 
         /// <inheritdoc />
@@ -48,7 +52,7 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew
             if (!IsReadyToFire()) return false;
 
             //do it
-            Shoot();
+            Fire();
 
             LastShotTime = Time.time;
             return true;
@@ -66,7 +70,7 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew
 
         #endregion
 
-        private void Shoot()
+        private void Fire()
         {
             var bullet = Instantiate(bulletPrefab, MuzzleSocket.position, MuzzleSocket.rotation);
             if (!bullet.TryGetComponent(out Projectile projectileData)) return;
@@ -77,6 +81,8 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew
                 projectileData.AddAdditionalDamage(baseDamage);
 
             projectileData.OverrideRangeConfig(rangeConfig);
+
+            onWeaponFire.Invoke();
         }
 
         #region Overrides of BaseGun
