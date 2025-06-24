@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 300440362259909071}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.07717819, y: -0.1516262, z: -0.011876238, w: 0.98534864}
+  m_LocalRotation: {x: -0.07717819, y: -0.15162566, z: -0.011876195, w: 0.98534876}
   m_LocalPosition: {x: 0.428, y: -0.171, z: 0.486}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -245,6 +245,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d067cc60508e739499974d1f7cefeacf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ticker:
+    tickEveryFrame: 1
+    staggerDelay: 0
+    _tickTime: 0.1
   modules:
     elements:
     - {fileID: 3454788310575554759}
@@ -254,7 +258,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   debugMode: 0
-  _isValidated: 1
+  _modulesPopulated: 1
   characterController: {fileID: 5905684106433823020}
 --- !u!114 &3454788310575554759
 MonoBehaviour:
@@ -718,7 +722,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1502997166760434827}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.07640868, y: 0.16386653, z: 0.012731707, w: 0.9834365}
+  m_LocalRotation: {x: -0.07640868, y: 0.16386646, z: 0.012731701, w: 0.9834365}
   m_LocalPosition: {x: -0.432, y: -0.171, z: 0.486}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1126,7 +1130,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3109693938204132652}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31ca22a5b10c4609b9c97cd707cd0ad1, type: 3}
+  m_Script: {fileID: 11500000, guid: 8e4d040890fb4c646887777336b93ca2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 9063085935866390404}
@@ -1497,7 +1501,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3587503813413191467}
   m_Layer: 6
-  m_Name: FirstPersonCamRig
+  m_Name: LookRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1544,7 +1548,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3984834603367141719}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.970361, y: -0, z: -0, w: -0.24166013}
+  m_LocalRotation: {x: 0.97036105, y: -0, z: -0, w: -0.24165995}
   m_LocalPosition: {x: 0, y: -0.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1860,7 +1864,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5581763965196573347}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.970361, y: -0, z: -0, w: -0.24166013}
+  m_LocalRotation: {x: 0.97036105, y: -0, z: -0, w: -0.24165995}
   m_LocalPosition: {x: 0, y: -0.57, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2206,7 +2210,7 @@ GameObject:
   - component: {fileID: 8058381046775443737}
   - component: {fileID: 400363223182246037}
   m_Layer: 9
-  m_Name: Sphere_001
+  m_Name: Right Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2220,7 +2224,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7571799300911800641}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.015660735, y: -0.07314507, z: -0.0011487246, w: 0.99719775}
+  m_LocalRotation: {x: -0.015660735, y: -0.07314488, z: -0.0011487217, w: 0.9971977}
   m_LocalPosition: {x: 0.225, y: 0, z: 0.376}
   m_LocalScale: {x: 0.35477, y: 0.35477, z: 0.35477}
   m_ConstrainProportionsScale: 0
@@ -2341,7 +2345,7 @@ GameObject:
   - component: {fileID: 2655260780376187873}
   - component: {fileID: 5496022848486929739}
   m_Layer: 9
-  m_Name: Sphere
+  m_Name: Left Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2355,7 +2359,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8126160472306594620}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.015592657, y: 0.08412294, z: 0.0013165284, w: 0.9963325}
+  m_LocalRotation: {x: -0.015592656, y: 0.0841234, z: 0.0013165356, w: 0.99633247}
   m_LocalPosition: {x: -0.225, y: 0, z: 0.376}
   m_LocalScale: {x: 0.35477, y: 0.35477, z: 0.35477}
   m_ConstrainProportionsScale: 0
