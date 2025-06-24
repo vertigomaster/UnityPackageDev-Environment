@@ -2507,6 +2507,7 @@ MonoBehaviour:
   slotManager: {fileID: 218613614}
   toolActivationInput: {fileID: 1120369429361536294, guid: a74092ff21d940944b7c56a21f02f6c2,
     type: 3}
+  toolReleaseInput: {fileID: 0}
   _ourInventory: {fileID: 1116641292}
 --- !u!114 &1116641295
 MonoBehaviour:
@@ -2537,6 +2538,7 @@ MonoBehaviour:
   slotManager: {fileID: 2724128708521636299}
   toolActivationInput: {fileID: 8451773025425308695, guid: a74092ff21d940944b7c56a21f02f6c2,
     type: 3}
+  toolReleaseInput: {fileID: 0}
   _ourInventory: {fileID: 1116641292}
 --- !u!1 &1171549846
 GameObject:
@@ -3797,7 +3799,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2127836538}
   m_Layer: 0
-  m_Name: '[Env Static] Wall Stuf'
+  m_Name: '[Env Static] Wall Stuff'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
