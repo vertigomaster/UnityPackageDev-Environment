@@ -1,0 +1,25 @@
+{
+    "name": "IDEK.Tools.GameplayEssentials.Samples.HackSlash",
+    "rootNamespace": "IDEK.Tools.GameplayEssentials.Samples.HackSlash",
+    "references": [
+        "IDEK.Tools.GameplayEssentials.Equipment",
+        "IDEK.Tools.ShocktroopUtils",
+        "IDEK.Tools.GameplayEssentials.Items",
+        "IDEK.Tools.GameplayEssentials.Inventory",
+        "IDEK.Tools.GameplayEssentials.Characters",
+        "Unity.InputSystem",
+        "IDEK.Tools.GameplayEssentials",
+        "IDEK.Tools.GameplayEssentials.Conflict",
+        "IDEK.Tools.Coroutines.TaskRoutines",
+        "IDEK.Tools.Spawnables"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
