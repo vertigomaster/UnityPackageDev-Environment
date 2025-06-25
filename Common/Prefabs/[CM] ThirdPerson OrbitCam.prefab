@@ -117,8 +117,8 @@ MonoBehaviour:
     Range: {x: -180, y: 180}
     Wrap: 1
     Recentering:
-      Enabled: 1
-      Wait: 2
+      Enabled: 0
+      Wait: 8
       Time: 8
     Restrictions: 0
   VerticalAxis:
@@ -128,8 +128,8 @@ MonoBehaviour:
     Wrap: 0
     Recentering:
       Enabled: 1
-      Wait: 10
-      Time: 4
+      Wait: 1
+      Time: 2
     Restrictions: 0
   RadialAxis:
     Value: 1
