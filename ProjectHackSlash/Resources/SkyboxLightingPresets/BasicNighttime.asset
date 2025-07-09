@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: BasicNighttime
+  m_EditorClassIdentifier: IDEK.Tools.GameplayEssentials.Samples.HackSlash:IDEK.Tools.GameplayEssentials.Samples.HackSlash:SkyboxLightingPreset
+  sunSize: 0.03
+  sunSizeConvergence: 1
+  atmosphereThickness: 1.17
+  skyTint: {r: 0.206, g: 0.206, b: 0.206, a: 1}
+  groundColor: {r: 0.128, g: 0.12209231, b: 0.11815385, a: 1}
+  exposure: 0.05
+  realtimeShadowColor: {r: 0.2020625, g: 0.23256251, b: 0.305, a: 1}
+  environmentIntensityMult: 1
+  reflectionIntensityMult: 1
