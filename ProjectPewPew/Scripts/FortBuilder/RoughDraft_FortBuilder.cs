@@ -22,21 +22,26 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew.FortBuilder
 
         private TargetingInfoCache _nonNullTargetingData;
 
+        private TaskRoutine _ghostLoopRoutine;
+        
         #region Overrides of BaseGun
 
         /// <inheritdoc />
         protected override void OnEnable()
         {
             base.OnEnable();
+            
             if (fortBuilder && fortBuilder.ghostTransform)
-            {
-                IEnumerable UpdateGhost_Routine() { while (true) {
-                    UpdateGhost();
-                    yield return null;
-                }}
-                
-                TaskRoutine.Start(UpdateGhost_Routine());
-            }
+                _ghostLoopRoutine = TaskRoutine.StartLoop(UpdateGhost);
+        }
+
+        /// <inheritdoc />
+        protected override void OnDisable()
+        {
+            _ghostLoopRoutine?.Destroy();
+            _ghostLoopRoutine = null;
+            
+            base.OnDisable();
         }
 
         #endregion
@@ -46,11 +51,7 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew.FortBuilder
         /// <inheritdoc />
         protected override void Activate()
         {
-            //it does a null check every time
-            _nonNullTargetingData = GetTargetingInfoCache(); 
-            
-            //send our own event with more data 
-            fortBuilder.PlacePiece(_nonNullTargetingData.HitPosition, _nonNullTargetingData.HitSurfaceNormal);
+            fortBuilder.PlacePieceAtGhost();
             base.Activate();
         }
 
