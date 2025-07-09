@@ -16,13 +16,12 @@ using UnityEngine.Events;
 
 namespace IDEK.Tools.GameplayEssentials.Samples.PewPew
 {
-    public class PewPewGun : BaseGun
+    public class PewPewGun : HitscanBaseGun
     {
         // private static readonly int shootTriggerHash = Animator.StringToHash("shoot");
 #if ODIN_INSPECTOR
         [Sirenix.OdinInspector.ShowInInspector, Sirenix.OdinInspector.ReadOnly]
 #endif
-        public float LastShotTime { get; protected set; } = 0.0f;
 
         //TODO: damage scaling table
 #if ODIN_INSPECTOR
@@ -38,39 +37,9 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew
 
         private Vector3[] positions = new Vector3[3];
 
-        public UnityEvent onWeaponFire;
-        // public UnityEvent onWeaponReadyToFire;
-
-        #region Overrides of BaseTool
-
-        /// <inheritdoc />
-#if ODIN_INSPECTOR
-        [Sirenix.OdinInspector.Button]
-#endif
-        public override bool TryActivate()
-        {
-            if (!IsReadyToFire()) return false;
-
-            //do it
-            Fire();
-
-            LastShotTime = Time.time;
-            return true;
-        }
-
-        #endregion
-
         #region Overrides of BaseGun
 
-        /// <inheritdoc />
-        public override bool IsReadyToFire()
-        {
-            return (Time.time - LastShotTime) >= fireModeConfig.EstimatedSecondsBetweenShots;
-        }
-
-        #endregion
-
-        private void Fire()
+        protected override void Activate()
         {
             var bullet = Instantiate(bulletPrefab, MuzzleSocket.position, MuzzleSocket.rotation);
             if (!bullet.TryGetComponent(out Projectile projectileData)) return;
@@ -82,32 +51,7 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew
 
             projectileData.OverrideRangeConfig(rangeConfig);
 
-            onWeaponFire.Invoke();
-        }
-
-        #region Overrides of BaseGun
-
-        /// <inheritdoc />
-        protected override void UpdateTargetCache()
-        {
-            if (Physics.Raycast(
-                MuzzleSocket.position,
-                MuzzleSocket.forward,
-                out RaycastHit hit,
-                rangeConfig.MaxRange))
-            {
-                ExpectedTarget.position = hit.point;
-                ExpectedTarget.rotation = Quaternion.LookRotation(hit.normal);
-                
-                TargetingInfoCache.UpdateTarget(hit.collider.gameObject);
-            }
-            else
-            {
-                ExpectedTarget.position = MuzzleSocket.position + MuzzleSocket.forward * rangeConfig.MaxRange;
-                ExpectedTarget.rotation = Quaternion.LookRotation(MuzzleSocket.forward);
-
-                TargetingInfoCache.ClearTarget();
-            }
+            base.Activate();
         }
 
         #endregion
