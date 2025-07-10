@@ -1,8 +1,7 @@
 fileFormatVersion: 2
-guid: 9c23d4c96fff61b418bc56da04c65ea5
-labels:
-- Projectile
-PrefabImporter:
+guid: d20ebe3e6beaa7a4d82fd91bec27a2e5
+folderAsset: yes
+DefaultImporter:
   externalObjects: {}
   userData: 
   assetBundleName: 

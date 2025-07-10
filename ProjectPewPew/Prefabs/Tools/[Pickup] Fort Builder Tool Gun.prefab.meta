@@ -1,7 +1,7 @@
 fileFormatVersion: 2
-guid: 9c23d4c96fff61b418bc56da04c65ea5
+guid: 42133465277b574418c22d309621fb63
 labels:
-- Projectile
+- Pickup
 PrefabImporter:
   externalObjects: {}
   userData: 

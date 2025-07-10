@@ -345,6 +345,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8757903404802963175, guid: fb0efcfdb3c8329479db20ba61853935,
+        type: 3}
+      propertyPath: ticker._tickTime
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
