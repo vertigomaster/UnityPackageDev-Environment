@@ -47,7 +47,7 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew.FortBuilder
             
             if (fortBuilder)
             {
-                if (fortBuilder.ghostTransform)
+                if (fortBuilder.placementTransform)
                     _ghostLoopRoutine = TaskRoutine.StartLoop(_UpdateGhost);
             }
         
@@ -93,21 +93,21 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew.FortBuilder
         //Consider changing to a routine that runs while there is a ghost
         private void _UpdateGhost()
         {
-            if (fortBuilder.ghostTransform == null) return;
+            if (fortBuilder.placementTransform == null) return;
             
             //update the ghost every frame
             _nonNullTargetingData = GetTargetingInfoCache();
 
             if (_nonNullTargetingData.HasTarget)
             {
-                fortBuilder.UpdateGhostTransform(
+                fortBuilder.PassGhostTransformIntent(
                     _nonNullTargetingData.HitPosition,
                     _nonNullTargetingData.HitSurfaceNormal, 
                     Vector3.one);
             }
             else
             {
-                fortBuilder.UpdateGhostTransform(
+                fortBuilder.PassGhostTransformIntent(
                     ExpectedTarget.position,
                     surfaceNormal: Vector3.up,
                     Vector3.one);

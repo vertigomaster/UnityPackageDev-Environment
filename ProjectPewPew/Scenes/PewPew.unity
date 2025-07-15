@@ -2198,7 +2198,7 @@ MonoBehaviour:
   - {fileID: 2222700839965039957, guid: dddc9ad852823684d87fd8508b3d5353, type: 3}
   currentRotationOffset: 0
   spinSpeed: 250
-  ghostTransform: {fileID: 1851935255}
+  placementTransform: {fileID: 1851935255}
 --- !u!4 &1030949516
 Transform:
   m_ObjectHideFlags: 0

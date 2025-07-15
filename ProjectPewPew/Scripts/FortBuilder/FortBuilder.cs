@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using IDEK.Tools.GameplayEssentials.Targeting;
 using UnityEngine;
+using UnityEngine.Serialization;
+
 
 namespace IDEK.Tools.GameplayEssentials.Samples.PewPew.FortBuilder
 {
@@ -17,13 +19,14 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew.FortBuilder
         private int _selectedPiece = 0; //temp
 
         public float currentRotationOffset;
-        public float spinSpeed = 10f;
+        public float spinSpeed = 250f;
         
         //may need later?
         // protected InstantiateParameters placementContext;
 
         //meant to be the object being placed but with a ghostly material effect over it (maybe post-processing)
-        public Transform ghostTransform;
+        [FormerlySerializedAs("ghostTransform")]
+        public Transform placementTransform;
         
         //we don't need to track this yet (if ever)
         // public HashSet<GameObject> placedPieces = new();
@@ -37,10 +40,10 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew.FortBuilder
         public void PlacePieceAtGhost()
         {
             GameObject newPart = Instantiate(placeablePieces[_selectedPiece],
-                ghostTransform.position,
-                ghostTransform.rotation);
+                placementTransform.position,
+                placementTransform.rotation);
 
-            newPart.transform.localScale = ghostTransform.localScale;
+            newPart.transform.localScale = placementTransform.localScale;
         }
 
         /// <summary>
@@ -70,16 +73,16 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew.FortBuilder
             PlacePiece(position, Vector3.up, Vector3.one);
         }
 
-        public void UpdateGhostTransform(Vector3 position, Vector3 surfaceNormal, Vector3 scale)
+        public void PassGhostTransformIntent(Vector3 position, Vector3 surfaceNormal, Vector3 scale)
         {
-            ghostTransform.position = position;
-            ghostTransform.rotation = CalcPlacementRotation(position, surfaceNormal);
-            ghostTransform.localScale = scale;
+            placementTransform.position = position;
+            placementTransform.rotation = CalcPlacementRotation(position, surfaceNormal);
+            placementTransform.localScale = scale;
         }
 
         public void UpdateGhostTransform(Vector3 position, Vector3 surfaceNormal)
         {
-            UpdateGhostTransform(position, surfaceNormal, Vector3.one);
+            PassGhostTransformIntent(position, surfaceNormal, Vector3.one);
         }
 
         public void SpinGhost(float delta)
@@ -96,8 +99,7 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew.FortBuilder
         {
             Vector3 look = Vector3.ProjectOnPlane(transform.position - position, surfaceNormal);
             
-            return Quaternion.LookRotation(look, surfaceNormal) *
-                Quaternion.AngleAxis(currentRotationOffset, surfaceNormal);
+            return Quaternion.AngleAxis(currentRotationOffset, surfaceNormal) * Quaternion.LookRotation(look, surfaceNormal);
         }
 
         public void GoToNextPiece() => _selectedPiece = (_selectedPiece + 1) % placeablePieces.Count;
