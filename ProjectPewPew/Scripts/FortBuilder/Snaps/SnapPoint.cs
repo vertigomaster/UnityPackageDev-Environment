@@ -9,6 +9,9 @@ namespace IDEK.Tools.GameplayEssentials.Snapping
     /// </summary>
     public class SnapPoint : MonoBehaviour
     {
+#if ODIN_INSPECTOR
+        [Sirenix.OdinInspector.InlineEditor]
+#endif
         public SnapType type;
         
         //we denote what snap type we are

@@ -25,54 +25,34 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew.FortBuilder
         private TaskRoutine _ghostLoopRoutine;
         
         
-        #region Overrides of BaseGun
+        #region Overrides of BaseGun (Lifecycle)
 
         protected override void OnValidate()
         {
             base.OnValidate();
-            if (!fortBuilder)
-            {
-                fortBuilder = FindFirstObjectByType<FortBuilder>();
-            }
+            _EnsureRequiredRefs();
         }
 
         protected override void OnEnable()
         {
             base.OnEnable();
 
-            if (!fortBuilder)
-            {
-                fortBuilder = FindFirstObjectByType<FortBuilder>();
-            }
+            _EnsureRequiredRefs();
             
+            //trigger placement ghost update loop if there is a ghost transform to update
             if (fortBuilder)
             {
-                if (fortBuilder.placementTransform)
+                if (fortBuilder.FinalPlacementTransform)
                     _ghostLoopRoutine = TaskRoutine.StartLoop(_UpdateGhost);
             }
         
-            if (goToNextPieceInput != null)
-                goToNextPieceInput.action.performed += _OnGoNextPieceInput;
-
-            if (goToPreviousPieceInput != null)
-                goToPreviousPieceInput.action.performed += _OnGoPrevPieceInput;
-            
-            if (spinClockwiseInput != null)
-                spinClockwiseInput.action.performed += _OnSpinClockwiseInput;
-
-            if (spinCounterClockwiseInput != null)
-                spinCounterClockwiseInput.action.performed += _OnSpinCounterClockwiseInput;
-
+            _EnableInputs();
         }
 
         protected override void OnDisable()
         {
-            if (goToNextPieceInput != null)
-                goToNextPieceInput.action.performed -= _OnGoNextPieceInput;
+            _DisableInputs();
 
-            if (goToPreviousPieceInput != null)
-                goToPreviousPieceInput.action.performed -= _OnGoPrevPieceInput;
-        
             _ghostLoopRoutine?.Destroy();
             _ghostLoopRoutine = null;
             
@@ -90,27 +70,77 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew.FortBuilder
             base.Activate();
         }
 
+        #endregion
+
+
         //Consider changing to a routine that runs while there is a ghost
+
         private void _UpdateGhost()
         {
-            if (fortBuilder.placementTransform == null) return;
+            //future optim - this check MAY be redundant, but safer to keep for now.
+            if (fortBuilder.FinalPlacementTransform == null) return;
             
-            //update the ghost every frame
+            //update the ghost
             _nonNullTargetingData = GetTargetingInfoCache();
 
             if (_nonNullTargetingData.HasTarget)
             {
-                fortBuilder.PassGhostTransformIntent(
+                //has valid target, use that data to position the ghost 
+                //on the surface of the target
+                fortBuilder.RelayGhostTransformIntent(
                     _nonNullTargetingData.HitPosition,
                     _nonNullTargetingData.HitSurfaceNormal, 
                     Vector3.one);
             }
             else
             {
-                fortBuilder.PassGhostTransformIntent(
+                //no target, fallback on our hitscan "expected target" point.
+                fortBuilder.RelayGhostTransformIntent(
                     ExpectedTarget.position,
                     surfaceNormal: Vector3.up,
                     Vector3.one);
+            }
+        }
+
+        #region Toggle Inputs
+
+        private void _EnableInputs()
+        {
+            if (goToNextPieceInput != null)
+                goToNextPieceInput.action.performed += _OnGoNextPieceInput;
+
+            if (goToPreviousPieceInput != null)
+                goToPreviousPieceInput.action.performed += _OnGoPrevPieceInput;
+            
+            if (spinClockwiseInput != null)
+                spinClockwiseInput.action.performed += _OnSpinClockwiseInput;
+
+            if (spinCounterClockwiseInput != null)
+                spinCounterClockwiseInput.action.performed += _OnSpinCounterClockwiseInput;
+        }
+
+        private void _DisableInputs()
+        {
+            if (goToNextPieceInput != null)
+                goToNextPieceInput.action.performed -= _OnGoNextPieceInput;
+
+            if (goToPreviousPieceInput != null)
+                goToPreviousPieceInput.action.performed -= _OnGoPrevPieceInput;
+
+            if (spinClockwiseInput != null)
+                spinClockwiseInput.action.performed -= _OnSpinClockwiseInput;
+
+            if (spinCounterClockwiseInput != null)
+                spinCounterClockwiseInput.action.performed -= _OnSpinCounterClockwiseInput;
+        }
+
+        #endregion
+
+        private void _EnsureRequiredRefs()
+        {
+            if (!fortBuilder)
+            {
+                fortBuilder = FindFirstObjectByType<FortBuilder>();
             }
         }
 
@@ -136,7 +166,5 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew.FortBuilder
             if (fortBuilder) fortBuilder.SpinGhost(false);
 
         }
-        
-        #endregion
     }
 }

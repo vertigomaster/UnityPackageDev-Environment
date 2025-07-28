@@ -61,7 +61,7 @@ PrefabInstance:
     - target: {fileID: 8605574064314418559, guid: 713bde7659123ae48aba05605bd6e2e6,
         type: 3}
       propertyPath: m_Name
-      value: TestWeapon (For Player)
+      value: TestWeapon (Equipment For Player)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -126,12 +126,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e750eb5e540f4db18b2f74d74b1780e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toolActivated:
+    m_PersistentCalls:
+      m_Calls: []
   rangeConfig: {fileID: 11400000, guid: 6cf3f21547c4ffa43b044a3e8a776609, type: 2}
   fireModeConfig: {fileID: 11400000, guid: 3a10c2d7f9c183e469cfc5c2440a002f, type: 2}
   <MuzzleSocket>k__BackingField: {fileID: 1763487351762383877}
   <PivotSocket>k__BackingField: {fileID: 1583014633974902185}
   <GripSocket>k__BackingField: {fileID: 6975725747801790572}
   <ExpectedTarget>k__BackingField: {fileID: 5678962165878858917}
+  hitscanTargetableLayerMask:
+    serializedVersion: 2
+    m_Bits: 3063
   baseDamage: 10
   baseDamageSpec: {fileID: 11400000, guid: 748b5ac328906274aa7abbae9ced7029, type: 2}
   raycastLine: {fileID: 8791966350298369621}

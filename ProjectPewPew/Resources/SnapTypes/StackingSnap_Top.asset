@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cf5d279fc504f628b16f57533c5622b, type: 3}
+  m_Name: StackingSnap_Top
+  m_EditorClassIdentifier: 
+  allowUnlistedSnaps: 0
+  explicitlyAllowedSnaps:
+  - {fileID: 11400000, guid: b1401bc149f86224abebe355b346a680, type: 2}
+  explicitlyDisallowedSnaps:
+  - {fileID: 11400000}
+  alignmentMode: 100
+  snapAxes: 1
+  useWorldSpaceAxes: 0
+  allowFlip: 1
+  canSnapWithSameType: 0

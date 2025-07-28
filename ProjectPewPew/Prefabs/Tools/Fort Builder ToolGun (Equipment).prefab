@@ -526,6 +526,9 @@ MonoBehaviour:
   <PivotSocket>k__BackingField: {fileID: 4076160895050053162}
   <GripSocket>k__BackingField: {fileID: 3024758991456988266}
   <ExpectedTarget>k__BackingField: {fileID: 3467492836628426240}
+  hitscanTargetableLayerMask:
+    serializedVersion: 2
+    m_Bits: 3059
   fortBuilder: {fileID: 0}
   spinClockwiseInput: {fileID: 4274410131046828692, guid: a74092ff21d940944b7c56a21f02f6c2,
     type: 3}
@@ -535,3 +538,4 @@ MonoBehaviour:
     type: 3}
   goToPreviousPieceInput: {fileID: 2411907206095950430, guid: a74092ff21d940944b7c56a21f02f6c2,
     type: 3}
+  spinSpeed: 0

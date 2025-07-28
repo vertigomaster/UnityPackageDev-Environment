@@ -12,8 +12,8 @@ namespace IDEK.Tools.GameplayEssentials.Snapping.Editor
     
     public static class SnapSettingsProvider
     {
-        public static string matrixAssetSaveLocation = "Assets/IDEK/Snapping/SnapCompatibilityMatrix.asset";
-        public static string globalSnapSettingsLocation = "Assets/IDEK/Snapping/GlobalSnapSettings.asset";
+        public static string matrixAssetSaveLocation = "Assets/Plugins/IDEK/Snapping/SnapCompatibilityMatrix.asset";
+        public static string globalSnapSettingsLocation = "Assets/Plugins/IDEK/Snapping/GlobalSnapSettings.asset";
         
         [SettingsProvider]
         public static SettingsProvider CreateSnapCompatibilitySettings()
@@ -112,6 +112,7 @@ namespace IDEK.Tools.GameplayEssentials.Snapping.Editor
             
             //make, serialize, and save new scrob to send
             ass = ScriptableObject.CreateInstance<SnapCompatibilityMatrix>();
+            // AssetDatabase.CreateFolder(direc) //TODO: ensure tree exists
             AssetDatabase.CreateAsset(ass, matrixAssetSaveLocation);
             AssetDatabase.SaveAssets();
             return ass;
