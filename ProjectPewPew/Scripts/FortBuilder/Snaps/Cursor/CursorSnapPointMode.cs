@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using IDEK.Tools.DataStructures;
+using IDEK.Tools.Logging;
 using UnityEngine;
 
 namespace IDEK.Tools.GameplayEssentials.Snapping.Cursor
@@ -44,8 +45,16 @@ namespace IDEK.Tools.GameplayEssentials.Snapping.Cursor
             //get an up to date thing to work from.
             _RefreshSnapPairCandidates();
 
-            float bestSqrDistance = float.MaxValue; //cache
-            float currentDist; //cache
+            float minSqrDistanceBetweenSnaps = float.MaxValue; //cache
+            float minDisplacementOfActiveObject = float.MaxValue;
+            
+            float minDisplacementSum = float.MaxValue;
+            
+            // float bestDotProduct = 0f; //somehow weigh dot product against min dist
+            Vector3 delta;
+            float currentSnapDist; //cache
+            float currentTargetDisplacement; //cache
+            // float currentDot;
             SnapPointPair candidateSnapPair = null; //cache
 
             //the "from" is the snap point on the preview
@@ -56,14 +65,19 @@ namespace IDEK.Tools.GameplayEssentials.Snapping.Cursor
             //get the "from -> to" snap operation pair with the smallest delta (requires the minimal shift for the preview object)  
             foreach (var fromToPair in _currentSnapPairCandidates)
             {
-                currentDist = Vector3.SqrMagnitude(
-                    fromToPair.to.transform.position - fromToPair.from.transform.position);
+                delta = fromToPair.to.transform.position - fromToPair.from.transform.position;
+                currentSnapDist = Vector3.SqrMagnitude(delta);
                 
-                if (currentDist < bestSqrDistance)
+                //see where we'd go if we matched to's rotation
+                
+                
+                // fromToPair.to.transform.rotation = Quaternion.LookRotation(delta);
+                
+                if (currentSnapDist < minSqrDistanceBetweenSnaps)
                 {
-                    bestSqrDistance = currentDist;
+                    minSqrDistanceBetweenSnaps = currentSnapDist;
                     candidateSnapPair = fromToPair;
-                }
+                } 
             }
 
             return candidateSnapPair;
@@ -71,6 +85,14 @@ namespace IDEK.Tools.GameplayEssentials.Snapping.Cursor
 
         private void _SnapThePreview(SnapPointPair candidate)
         {
+            //now we need to rotate to match the snap.
+            //For this system, we take on the limitation of having a snap point's rotation be the rotation you want to match in order to validly snap to it.
+            //this means a snappable object's visuals may need to be a child object to offset it
+            //(which is already fairly standard practice for most object instantiation related workflows anyway). 
+            transform.rotation = candidate.to.transform.rotation;
+
+            //rotate first because that changes the delta (this might be where our slidiness was coming from)
+            
             //this is how much the "from" needs to move to be at the "to"
             //this does not account for rotation
             //whatever rotation we do, we would try to perform about the from point, since "from" is ours.
@@ -83,12 +105,6 @@ namespace IDEK.Tools.GameplayEssentials.Snapping.Cursor
             //Multiple points that end up close to other multiple foreign points might cause shifting, but
             //avoiding that is the responsibility of the designer, not the system programmer.
             transform.position += delta;
-
-            //now we need to rotate to match the snap.
-            //For this system, we take on the limitation of having a snap point's rotation be the rotation you want to match in order to validly snap to it.
-            //this means a snappable object's visuals may need to be a child object to offset it
-            //(which is already fairly standard practice for most object instantiation related workflows anyway). 
-            transform.rotation = candidate.to.transform.rotation;
         }
         #endregion
 
@@ -102,23 +118,33 @@ namespace IDEK.Tools.GameplayEssentials.Snapping.Cursor
         {
             _currentSnapPairCandidates.Clear();
 
+            ConsoleLog.Log($"fooble - checking candidates - {cursor.CachedSnapsOnActiveObject} snaps on active obj, {cursor.NearbySnapPoints} snaps nearby to compare them against.");
+            
             //check our current object (nested) for its own snap points and see which of them snap to the nearby ones
 
             foreach (SnapPoint mySnap in cursor.CachedSnapsOnActiveObject)
             {
+                ConsoleLog.Log(
+                    $"fooble - checking snap {mySnap.name}");
+                
+                if (mySnap.IsAttached) continue;
+                ConsoleLog.Log($"fooble - our snap is not already attached! viable");
                 //for each snap point on our preview,
                 //see if it is compatible with each of the nearby ones   
 
                 foreach (var nearbySnap in cursor.NearbySnapPoints)
                 {
-                    if (mySnap.type.IsCompatibleWith(nearbySnap.type))
-                    {
-                        //yay compat
-                        _currentSnapPairCandidates.Add(new(mySnap, nearbySnap));
-                    }
-
+                    if (nearbySnap.IsAttached) continue;
+                    ConsoleLog.Log($"fooble - nearby not already attached! viable");
+                    if (!mySnap.type.IsCompatibleWith(nearbySnap.type)) continue;
+                    ConsoleLog.Log($"fooble - nearby is compatible! viable");
+                    
+                    //yay compat
+                    _currentSnapPairCandidates.Add(new(mySnap, nearbySnap));
                 }
             }
+            
+            ConsoleLog.Log($"fooble - got {_currentSnapPairCandidates.Count} candidate pairs!");
         }
         #endregion
     }

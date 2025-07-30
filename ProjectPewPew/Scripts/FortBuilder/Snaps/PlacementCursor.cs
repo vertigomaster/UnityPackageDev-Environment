@@ -46,16 +46,6 @@ namespace IDEK.Tools.GameplayEssentials.Snapping.Cursor
         [Sirenix.OdinInspector.InfoBox("If you want to start with a mode already enabled, set it here.")]
 #endif
         public CursorSnapMode currentMode;
-
-        [Obsolete("snap module")]
-        private CleanableList<(SnapPoint from, SnapPoint to)> _snapPairCandidates = new();
-        private bool _snapPairCandidatesDirty;
-        [Obsolete("This seems unhelpful")]
-        private Vector3 _externalDesiredPosition;
-        [Obsolete("This seems unhelpful")]
-        private Quaternion _externalDesiredRotation;
-        [Obsolete("This seems unhelpful")]
-        private Vector3 _externalDesiredScale;
         
         public GameObject PreviewObject { get; protected set; }
         
@@ -141,11 +131,15 @@ namespace IDEK.Tools.GameplayEssentials.Snapping.Cursor
 
         private void _DisableCollision(GameObject it)
         {
+            var cursorSnapPointLayers = GlobalSnappingSettingsAsset.Instance.snappingPointLayers;
+            
             var cols = it.GetComponentsInChildren<Collider>();
             if (cols.Length > 0)
             {
                 foreach (Collider col in cols)
                 {
+                    if (cursorSnapPointLayers.Includes(col)) continue;
+                    
                     col.enabled = false;
                 }
             }

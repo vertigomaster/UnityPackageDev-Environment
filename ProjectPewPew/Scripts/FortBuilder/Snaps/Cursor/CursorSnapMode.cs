@@ -15,6 +15,7 @@ namespace IDEK.Tools.GameplayEssentials.Snapping.Cursor
         private void OnEnable() => _EnsureCorrectComponentSettings();
 
         public abstract bool TryExecuteSnap();
+        public virtual void OnActiveObjectPlaced() { }
 
         protected bool NullCheckSnapPoints() => cursor.NullCheckSnapPoints();
 

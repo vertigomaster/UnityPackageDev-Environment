@@ -528,7 +528,7 @@ MonoBehaviour:
   <ExpectedTarget>k__BackingField: {fileID: 3467492836628426240}
   hitscanTargetableLayerMask:
     serializedVersion: 2
-    m_Bits: 3059
+    m_Bits: 1011
   fortBuilder: {fileID: 0}
   spinClockwiseInput: {fileID: 4274410131046828692, guid: a74092ff21d940944b7c56a21f02f6c2,
     type: 3}
@@ -542,6 +542,6 @@ MonoBehaviour:
     type: 3}
   reelOutCursorInput: {fileID: 9036280456585665234, guid: a74092ff21d940944b7c56a21f02f6c2,
     type: 3}
-  tempRangeOverride: 10
+  userRangeOverride: 10
   reelSpeed: 20
   spinSpeed: 0
