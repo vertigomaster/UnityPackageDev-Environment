@@ -538,4 +538,10 @@ MonoBehaviour:
     type: 3}
   goToPreviousPieceInput: {fileID: 2411907206095950430, guid: a74092ff21d940944b7c56a21f02f6c2,
     type: 3}
+  reelInCursorInput: {fileID: 7489658326828239052, guid: a74092ff21d940944b7c56a21f02f6c2,
+    type: 3}
+  reelOutCursorInput: {fileID: 9036280456585665234, guid: a74092ff21d940944b7c56a21f02f6c2,
+    type: 3}
+  tempRangeOverride: 10
+  reelSpeed: 20
   spinSpeed: 0

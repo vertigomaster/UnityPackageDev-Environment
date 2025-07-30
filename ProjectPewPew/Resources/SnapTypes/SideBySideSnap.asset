@@ -15,8 +15,7 @@ MonoBehaviour:
   allowUnlistedSnaps: 1
   explicitlyAllowedSnaps:
   - {fileID: 11400000}
-  explicitlyDisallowedSnaps:
-  - {fileID: 0}
+  explicitlyDisallowedSnaps: []
   alignmentMode: 100
   snapAxes: 1
   useWorldSpaceAxes: 0

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using IDEK.Tools.GameplayEssentials.Snapping;
+using IDEK.Tools.GameplayEssentials.Snapping.Cursor;
 using IDEK.Tools.GameplayEssentials.Targeting;
 using IDEK.Tools.Logging;
 using UnityEngine;

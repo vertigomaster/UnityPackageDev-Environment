@@ -3,6 +3,7 @@ using IDEK.Tools.GameplayEssentials.Conflict.Weapons.Unity;
 using IDEK.Tools.GameplayEssentials.Targeting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 namespace IDEK.Tools.GameplayEssentials.Samples.PewPew.FortBuilder
 {
@@ -17,6 +18,19 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew.FortBuilder
         public InputActionReference spinCounterClockwiseInput;
         public InputActionReference goToNextPieceInput;
         public InputActionReference goToPreviousPieceInput;
+        public InputActionReference reelInCursorInput;
+        public InputActionReference reelOutCursorInput;
+
+        [FormerlySerializedAs("tempRangeOverride")]
+        public float userRangeOverride = 10f;
+        public float reelSpeed = 10f;
+
+        #region Overrides of BaseGun
+
+        /// <inheritdoc />
+        public override float MaxRange => Mathf.Min(userRangeOverride, rangeConfig.MaxRange);
+
+        #endregion
 
         public float spinSpeed;
         
@@ -117,6 +131,12 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew.FortBuilder
 
             if (spinCounterClockwiseInput != null)
                 spinCounterClockwiseInput.action.performed += _OnSpinCounterClockwiseInput;
+
+            if (reelInCursorInput != null)
+                reelInCursorInput.action.performed += _OnReelInCursorInput;
+
+            if (reelOutCursorInput != null)
+                reelOutCursorInput.action.performed += _OnReelOutCursorInput;
         }
 
         private void _DisableInputs()
@@ -132,6 +152,12 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew.FortBuilder
 
             if (spinCounterClockwiseInput != null)
                 spinCounterClockwiseInput.action.performed -= _OnSpinCounterClockwiseInput;
+            
+            if (reelInCursorInput != null)
+                reelInCursorInput.action.performed -= _OnReelInCursorInput;
+
+            if (reelOutCursorInput != null)
+                reelOutCursorInput.action.performed -= _OnReelOutCursorInput;
         }
 
         #endregion
@@ -165,6 +191,16 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew.FortBuilder
             // if (fortBuilder) fortBuilder.SpinGhost(-10f);
             if (fortBuilder) fortBuilder.SpinGhost(false);
 
+        }
+
+        private void _OnReelInCursorInput(InputAction.CallbackContext obj)
+        {
+            userRangeOverride = Mathf.Max(0f, userRangeOverride - reelSpeed * Time.deltaTime);
+        }
+
+        private void _OnReelOutCursorInput(InputAction.CallbackContext obj)
+        {
+            userRangeOverride = Mathf.Max(0f, userRangeOverride + reelSpeed * Time.deltaTime);
         }
     }
 }
