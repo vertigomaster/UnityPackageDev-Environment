@@ -529,6 +529,7 @@ MonoBehaviour:
   hitscanTargetableLayerMask:
     serializedVersion: 2
     m_Bits: 1011
+  triggerInteractionMode: 2
   fortBuilder: {fileID: 0}
   spinClockwiseInput: {fileID: 4274410131046828692, guid: a74092ff21d940944b7c56a21f02f6c2,
     type: 3}

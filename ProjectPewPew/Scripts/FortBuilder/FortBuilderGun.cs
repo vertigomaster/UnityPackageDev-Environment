@@ -37,8 +37,12 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew.FortBuilder
         private TargetingInfoCache _nonNullTargetingData;
 
         private TaskRoutine _ghostLoopRoutine;
-        
-        
+
+        protected override void Reset()
+        {
+            triggerInteractionMode = QueryTriggerInteraction.Collide;
+        }
+
         #region Overrides of BaseGun (Lifecycle)
 
         protected override void OnValidate()

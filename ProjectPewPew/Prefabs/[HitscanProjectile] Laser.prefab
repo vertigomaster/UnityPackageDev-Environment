@@ -51,6 +51,9 @@ LineRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -152,7 +155,10 @@ MonoBehaviour:
   lifetime: 0.1
   damages: []
   rangeConfig: {fileID: 11400000, guid: 6cf3f21547c4ffa43b044a3e8a776609, type: 2}
-  range: 100
+  remainingRange: 100
+  collisionLayerMask:
+    serializedVersion: 2
+    m_Bits: 3063
   onlyGiveBounceRemainderOfRange: 0
   stillBounceIfDealingDamage: 1
   bounceDelay: 0.01
