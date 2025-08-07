@@ -137,7 +137,7 @@ MonoBehaviour:
   <ExpectedTarget>k__BackingField: {fileID: 5678962165878858917}
   hitscanTargetableLayerMask:
     serializedVersion: 2
-    m_Bits: 3063
+    m_Bits: 1015
   baseDamage: 10
   baseDamageSpec: {fileID: 11400000, guid: 748b5ac328906274aa7abbae9ced7029, type: 2}
   raycastLine: {fileID: 8791966350298369621}

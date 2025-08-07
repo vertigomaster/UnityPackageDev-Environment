@@ -7643,6 +7643,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[Avatar] Gordon'
       objectReference: {fileID: 0}
+    - target: {fileID: 2121702256415827843, guid: af462a796aa00a34488d69494c8a0be2,
+        type: 3}
+      propertyPath: maxJumpImpulse
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681601339672211347, guid: af462a796aa00a34488d69494c8a0be2,
+        type: 3}
+      propertyPath: debugMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3097261714706310386, guid: af462a796aa00a34488d69494c8a0be2,
         type: 3}
       propertyPath: m_LocalRotation.w
