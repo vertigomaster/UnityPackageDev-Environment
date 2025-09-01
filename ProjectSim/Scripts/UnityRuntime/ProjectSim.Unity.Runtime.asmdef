@@ -1,0 +1,17 @@
+{
+    "name": "ProjectSim.Unity.Runtime",
+    "rootNamespace": "IDEK.ProjectSim.Unity.Runtime",
+    "references": [
+        "GUID:0a19d8f685ce446cb773931b5bff47b8",
+        "GUID:322b9cc4a6c46c4489ebcdf7798a9f2e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

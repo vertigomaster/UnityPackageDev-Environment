@@ -1,0 +1,19 @@
+{
+    "name": "ProjectSim.Unity.Editor",
+    "rootNamespace": "IDEK.ProjectSim.Unity.Editor",
+    "references": [
+        "GUID:b20d2d9d7769485e99b1bf7cf566e4eb",
+        "GUID:0a19d8f685ce446cb773931b5bff47b8"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
