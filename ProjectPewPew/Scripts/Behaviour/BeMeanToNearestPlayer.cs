@@ -6,6 +6,7 @@ using IDEK.Tools.GameplayEssentials.Core;
 using IDEK.Tools.GameplayEssentials.Targeting;
 using IDEK.Tools.GameplayEssentials.Transformation;
 using IDEK.Tools.Logging;
+using IDEK.Tools.ShocktroopUtils.Services;
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
 #endif
@@ -29,7 +30,7 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew
 
         public void AggroClosestPlayer()
         {
-            IEnumerable<CharacterAvatar> avatars = RuntimeCharacterRegistry.Singleton.GetAllAvatars();
+            IEnumerable<CharacterAvatar> avatars = ServiceLocator.Resolve<RuntimeCharacterRegistry>().GetAllAvatars();
             
             float closestDistance = float.MaxValue;
             CharacterAvatar closestAvatar = null;
