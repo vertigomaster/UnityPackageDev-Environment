@@ -147,7 +147,7 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew
             ConsoleLog.Log("fooble - sees change was an Add");
 
             //the item does not contain the necessary metadata? return
-            if(!change.Key.def.globalMetadata.TryGetData(
+            if(!change.Key.def.globalMetadata.TryGet(
                     out BaseEquipmentMetadata equipmentMetadata)) 
                 return false;
 
