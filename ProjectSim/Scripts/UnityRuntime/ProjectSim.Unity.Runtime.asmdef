@@ -3,7 +3,9 @@
     "rootNamespace": "IDEK.ProjectSim.Unity.Runtime",
     "references": [
         "GUID:0a19d8f685ce446cb773931b5bff47b8",
-        "GUID:322b9cc4a6c46c4489ebcdf7798a9f2e"
+        "GUID:322b9cc4a6c46c4489ebcdf7798a9f2e",
+        "GUID:c1e426231123acb4ba22f0e0eb0e5edd",
+        "GUID:0ef21f30d6690e942a878772b81445a7"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
