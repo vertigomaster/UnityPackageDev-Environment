@@ -1,18 +1,7 @@
 ﻿using System;
-using IDEK.Tools.Coroutines.TaskRoutines;
-using IDEK.Tools.GameplayEssentials.Abilities;
 using IDEK.Tools.GameplayEssentials.Conflict.Damage;
-using IDEK.Tools.GameplayEssentials.Conflict.Damage.Unity;
 using IDEK.Tools.GameplayEssentials.Conflict.Weapons.Unity;
-using IDEK.Tools.GameplayEssentials.Inventory.Unity;
-using IDEK.Tools.GameplayEssentials.Items;
-using IDEK.Tools.Logging;
-using IDEK.Tools.ShocktroopExtensions;
-using IDEK.Tools.ShocktroopUtils;
-using IDEK.Tools.ShocktroopUtils.Attributes;
-using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace IDEK.Tools.GameplayEssentials.Samples.PewPew
 {

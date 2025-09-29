@@ -453,7 +453,9 @@ GameObject:
   - component: {fileID: 5905684106433823020}
   - component: {fileID: 152411880488215235}
   - component: {fileID: 7659644343095583526}
+  - component: {fileID: 8969608973665500548}
   - component: {fileID: 5305911163119194916}
+  - component: {fileID: 6348329794952398449}
   - component: {fileID: 7614422302676695837}
   m_Layer: 6
   m_Name: '[Avatar] Gordon'
@@ -560,6 +562,23 @@ MonoBehaviour:
   nickname: Primary Tool
   equipmentSlots:
   - {fileID: 4360161768089472613}
+--- !u!114 &8969608973665500548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088619029940158169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc48918688ec493aab23b9e63eeeae15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotManager: {fileID: 7659644343095583526}
+  toolActivationInput: {fileID: 1120369429361536294, guid: a74092ff21d940944b7c56a21f02f6c2,
+    type: 3}
+  toolReleaseInput: {fileID: 0}
+  _ourInventory: {fileID: 0}
 --- !u!114 &5305911163119194916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -575,6 +594,23 @@ MonoBehaviour:
   nickname: Offhand Tool (Dual Wielding)
   equipmentSlots:
   - {fileID: 3020044458596021807}
+--- !u!114 &6348329794952398449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088619029940158169}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc48918688ec493aab23b9e63eeeae15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotManager: {fileID: 5305911163119194916}
+  toolActivationInput: {fileID: 8451773025425308695, guid: a74092ff21d940944b7c56a21f02f6c2,
+    type: 3}
+  toolReleaseInput: {fileID: 0}
+  _ourInventory: {fileID: 0}
 --- !u!114 &7614422302676695837
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ using IDEK.Tools.GameplayEssentials.Items.Unity;
 using IDEK.Tools.Logging;
 using IDEK.Tools.ShocktroopExtensions;
 using IDEK.Tools.ShocktroopUtils.Attributes;
+using IDEK.Tools.ShocktroopUtils.Services;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -37,6 +38,8 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew
         [Sirenix.OdinInspector.Required]
 #endif
         public BasicVisibleEquipmentSlotManager slotManager;
+        
+        //TODO: pull from some remappablecontrolsregistry service later
         public InputActionReference toolActivationInput;
         [Tooltip("Optional field for a separate input to use for detecting the end of a firing action " +
                  "(mostly used for repeatedly trying to fire a weapon when an input is held down, " +
@@ -66,6 +69,47 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew
         {
             FindBestMatchingInventory();
         }
+
+        //dumb idea - was easier to just put this on the avatar object
+        // private void LinkToAvatar()
+        // {
+        //     var ourState = GetComponentInParent<CharacterState>();
+        //     if(ourState == null) return;
+        //
+        //     if(!ServiceLocator.IsRegistered<RuntimeCharacterRegistry>()) return;
+        //
+        //     var registry = ServiceLocator.Resolve<RuntimeCharacterRegistry>();
+        //     CharacterAvatar avatar = registry.GetAvatarFromState(ourState);
+        //     if (avatar != null)
+        //     {
+        //         slotManager = avatar.GetComponentInChildren<BasicVisibleEquipmentSlotManager>();
+        //     }
+        //     else
+        //     {
+        //         //avatar not yet registered
+        //         //once they are, link the slot manager.
+        //         registry.OnPairRegistered.AddListener(OnPairRegistered);
+        //         void OnPairRegistered(CharacterAvatar newAvatar, CharacterState newState)
+        //         {
+        //             if (this == null && registry != null)
+        //             {
+        //                 ConsoleLog.LogWarning("Tool driver destroyed but this still was called. Removing listener");
+        //                 registry.OnPairRegistered.RemoveListener(OnPairRegistered);
+        //                 return;
+        //             }
+        //             
+        //             if (newState != ourState || newAvatar == null) return;
+        //             
+        //             slotManager = newAvatar.GetComponentInChildren<BasicVisibleEquipmentSlotManager>();
+        //             registry.OnPairRegistered.RemoveListener(OnPairRegistered);
+        //         }
+        //     }
+        // }
+
+        // protected virtual void Awake()
+        // {
+        //     LinkToAvatar();
+        // }
 
         [OverridesMustCallBase]
         protected virtual void OnEnable()
@@ -118,6 +162,8 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew
 
         private void OnInvChangeTryEquip_Internal(InventoryRuntime inv, InventoryChange change)
         {
+            //Note that unequip is a different process driven by the driver, not by the inventory.
+            
             //stop listening during the execution to avoid recursive calls and debounce.
             _ourInventory.Runtime.OnInventoryChanged.TryRemoveListener(OnInvChangeTryEquip_Internal);
             
@@ -167,6 +213,31 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew
                 change.Key.def as UnityItemDef,
                 out currentEquippedToolObj, 
                 equipmentMetadata);
+        }
+
+        protected virtual bool TryUnequip(InventoryRuntime invToReturnTo)
+        {
+            if(currentlyEquippedItem == null) return false;
+            
+            ConsoleLog.Log("fooble - Attempting unequip");
+            //try add it back to the inventory
+            if (!invToReturnTo.TryPut(currentlyEquippedItem)) return false;
+            
+            if (currentEquippedToolObj == null)
+            {
+                ConsoleLog.LogError("Unexpected null object when trying to unequip its item representation. " +
+                    "Something got missed. Attempting to limp off it.");
+            }
+            else
+            {
+                //despawn the representation
+                Destroy(currentEquippedToolObj);
+            }
+            
+            //null out our reference
+            currentlyEquippedItem = null;
+            
+            return true;
         }
     }
 }

@@ -1301,6 +1301,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <UseDontDestroyOnLoad>k__BackingField: 0
   <OverwriteMessage>k__BackingField: 
+  OnPairRegistered:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRegistrationPairRemoved:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAvatarUnregistered:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStateUnregistered:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &338266011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4037,6 +4049,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1633163046282140391}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1116641295 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4804290801468685347, guid: a16539bfa9b2c8b42b9ba12b43b80e00,
+    type: 3}
+  m_PrefabInstance: {fileID: 1633163046282140391}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116641290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1110c1d38368b4e9a3eb1848496abb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1123889711
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7317,6 +7341,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3706503542951424850, guid: a16539bfa9b2c8b42b9ba12b43b80e00,
         type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3706503542951424850, guid: a16539bfa9b2c8b42b9ba12b43b80e00,
+        type: 3}
       propertyPath: slotManager
       value: 
       objectReference: {fileID: 218613614}
@@ -7324,6 +7353,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: '[CharacterState] GordonState'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6080280785741712583, guid: a16539bfa9b2c8b42b9ba12b43b80e00,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6080280785741712583, guid: a16539bfa9b2c8b42b9ba12b43b80e00,
         type: 3}
@@ -7821,6 +7855,16 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.0013165284
       objectReference: {fileID: 0}
+    - target: {fileID: 6348329794952398449, guid: af462a796aa00a34488d69494c8a0be2,
+        type: 3}
+      propertyPath: _ourInventory
+      value: 
+      objectReference: {fileID: 1116641295}
+    - target: {fileID: 8969608973665500548, guid: af462a796aa00a34488d69494c8a0be2,
+        type: 3}
+      propertyPath: _ourInventory
+      value: 
+      objectReference: {fileID: 1116641295}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
