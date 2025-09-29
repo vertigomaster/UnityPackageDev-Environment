@@ -13,6 +13,7 @@ using IDEK.Tools.ShocktroopUtils.Attributes;
 using IDEK.Tools.ShocktroopUtils.Services;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 /*taking items out of inventory, instantiating the correct one, and equipping it to the hand so that it
  * - receives activation events from its hand
@@ -38,6 +39,10 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew
         [Sirenix.OdinInspector.Required]
 #endif
         public BasicVisibleEquipmentSlotManager slotManager;
+
+        [FormerlySerializedAs("primary")]
+        [Tooltip("What tool driver it should defer things to. An offhand, for example, often defers to its primary.")]
+        public PlayerToolDriver primaryDriver;
         
         //TODO: pull from some remappablecontrolsregistry service later
         public InputActionReference toolActivationInput;
@@ -62,7 +67,7 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew
         [SerializeField]
         private InventoryComponent _ourInventory;
 
-        private bool somethingEquipped = false;
+        public bool SomethingEquipped => currentlyEquippedItem != null && !currentlyEquippedItem.IsStale;
 
         [OverridesMustCallBase]
         protected virtual void OnValidate()
@@ -160,10 +165,16 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew
             a.CharacterState.TryGetRedirectedComponent(out _ourInventory);
         }
 
+        /// <summary>
+        /// Note that unequip is a different process and is driven by the driver, not by the inventory.
+        /// </summary>
+        /// <param name="inv"></param>
+        /// <param name="change"></param>
         private void OnInvChangeTryEquip_Internal(InventoryRuntime inv, InventoryChange change)
         {
-            //Note that unequip is a different process driven by the driver, not by the inventory.
-            
+            //defer to the primary if they don't have anything equipped.
+            if(primaryDriver && !primaryDriver.SomethingEquipped) return; 
+                
             //stop listening during the execution to avoid recursive calls and debounce.
             _ourInventory.Runtime.OnInventoryChanged.TryRemoveListener(OnInvChangeTryEquip_Internal);
             
