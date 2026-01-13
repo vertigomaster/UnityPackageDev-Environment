@@ -1,7 +1,9 @@
 {
     "name": "ProjectPortalMaze.Core",
-    "rootNamespace": "ProjectPortalMaze.Core",
-    "references": ["GUID:0ef21f30d6690e942a878772b81445a7"],
+    "rootNamespace": "ProjectPortalMaze",
+    "references": [
+        "GUID:0ef21f30d6690e942a878772b81445a7"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

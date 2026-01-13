@@ -1,12 +1,14 @@
 using System;
 using IDEK.Tools.Logging;
 using IDEK.Tools.ShocktroopExtensions;
+using IDEK.Tools.ShocktroopUtils;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace ProjectPortalMaze.Core
+namespace ProjectPortalMaze
 {
+    [DefaultExecutionOrder(-100)] //may need to change that
     public class PortalDriver : MonoBehaviour
     {
         public enum PortalMode
@@ -21,7 +23,12 @@ namespace ProjectPortalMaze.Core
         
         // private static readonly int SHADERPROP_MainTex = Shader.PropertyToID("_MainTex");
         //Unity 6 URP
-        private static readonly int SHADERPROP_MainTex = Shader.PropertyToID("_BaseMap");
+        // private static readonly int SHADERPROP_MainTex = Shader.PropertyToID("_BaseMap");
+        // private static readonly int SHADERPROP_MainTex = Shader.PropertyToID("_MainTex");
+
+        [SerializeField]
+        private string shaderTexturePropertyName = "_MainTex";
+        private int _textureShaderPropertyID;
 
         [Required]
         public Camera portalCam;
@@ -78,22 +85,38 @@ namespace ProjectPortalMaze.Core
             {
                 linkedPortal = null;
                 ConsoleLog.LogWarning($"[{name}] A portal cannot be paired to itself! Unpaired.");
-            } 
+            }
+
+            _textureShaderPropertyID = Shader.PropertyToID(shaderTexturePropertyName);
         }
 
         private void OnEnable()
         {
+            portalCam.forceIntoRenderTexture = true;
+            
             _playerCam = Camera.main;
-            if(_playerCam == null) ConsoleLog.LogError($"[{name}] Can't find player camera! Teleports won't work!");
+            if (_playerCam == null)
+            {
+                ConsoleLog.LogError($"[{name}] Can't find player camera! Teleports won't work!");
+                return;   
+            }
 
             //it signals to the engine that this camera will only be rendered to a RenderTexture
             //this prevents the Engine from rendering it directly to the backbuffer
-            portalCam.forceIntoRenderTexture = true; 
+            portalCam.fieldOfView = _playerCam.fieldOfView;
         }
+
+        //TODO: move to a math utility
+
+        private static Plane[] cache_frustumPlanes = new Plane[6];
         
         // public void OnPreRender()
+        //TODO: move to a taskroutine we can stop/start
         public void Update()
         {
+            // if (_playerCam == null || !_playerCam.CanSee(linkedPortal.surfaceMesh)) 
+                // return;
+            
             surfaceMesh.enabled = false;
             _CreateViewTexture();
             
@@ -140,7 +163,9 @@ namespace ProjectPortalMaze.Core
                 // _viewTexture.width
                 portalCam.targetTexture = _viewTexture;
                 
-                linkedPortal.surfaceMesh.material.SetTexture(SHADERPROP_MainTex, _viewTexture);
+                // linkedPortal.surfaceMesh.material.SetTexture(
+                surfaceMesh.material.SetTexture(
+                    _textureShaderPropertyID, _viewTexture);
                     
             }
         }
