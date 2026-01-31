@@ -15,6 +15,11 @@ namespace ProjectPortalMaze.Unity.Runtime
     /// </summary>
     class PortalRenderPass : ScriptableRenderPass
     {
+        /// <summary>
+        /// Helper class for building texture Descriptors -
+        /// what the render graph uses to track what kinds of
+        /// textures are in use and what kinds can be RE-used by later passes.
+        /// </summary>
         public static class PortalTexDescType
         {
             //scaled based on camera res, I think
@@ -36,8 +41,23 @@ namespace ProjectPortalMaze.Unity.Runtime
             //     colorFormat = GraphicsFormat.R8G8B8_SRGB //idk if this is best, but good start
             // };
             
+            /// <summary>
+            /// Portals are assigned to a resolution tier which will potentially
+            /// render their scene at a fraction of the original resolution
+            /// This is done when the portal's area in final screen space is
+            /// small enough that lower res rendering will basically still have a higher "DPI".
+            /// </summary>
+            /// <remarks>
+            /// Basically, as an example - if your portal is small enough onscreen
+            /// that it could fit in a box that's half the screen res, it should render
+            /// at half res to reduce pixel waste.
+            /// <para/>
+            /// Turns out this is less impactful than how many draw calls
+            /// we save with the tighter view frustum, but it still probably helps.
+            /// </remarks>
             public enum ResTier { Full, Three_Quarter, Half, Quarter }
             
+            //TODO: swap to the suggested formats
             //sRGB (gamma) better than UNorm for perceptual color maps and auto convert when sampled or rendered
             public const GraphicsFormat MAIN_COLOR_FORMAT = GraphicsFormat.R8G8B8_SRGB; 
             //depth-stencil combined, as the pipeline wishes
@@ -46,6 +66,12 @@ namespace ProjectPortalMaze.Unity.Runtime
             // public const GraphicsFormat PORTAL_INDEX_STENCIL_FORMAT = GraphicsFormat.R8G8B8_SRGB;
 
             //maybe writing them all out is more performant, but prob negligible. we'll factory it.
+            /// <summary>
+            /// Builds a new correct texture descriptor using the given contextual inputs from our render pass.
+            /// </summary>
+            /// <param name="resTier"></param>
+            /// <param name="format"></param>
+            /// <returns></returns>
             public static TextureDesc BuildDesc(ResTier resTier, GraphicsFormat format)
             {
                 return new TextureDesc(
@@ -62,11 +88,18 @@ namespace ProjectPortalMaze.Unity.Runtime
             }
         }
         
+        /// <summary>
+        /// Data we want to send to the GPU. Keep it minimal and use structs when you can.
+        /// </summary>
+        /// <remarks>
+        /// Chances are we only put blittable stuff in here, but it doesn't say for certain.
+        /// </remarks>
         private class PortalDrawPassData
         {
             //stuff visible in the execution phase
             // internal TextureHandle[] portalTextureHandles;
             internal TextureHandle portalColorBuffer;
+            
             //thinking we mark portals with an abnormal depth stencil value
             //to avoid needing a third handle just for that
             //plus, a visible portal's depth isn't actually knowable until we composite
@@ -108,9 +141,11 @@ namespace ProjectPortalMaze.Unity.Runtime
             var viewsByRecursionDepth = portalSys.PortalFrameData.viewsByRecursionDepth;
             for (var index = 0; index < viewsByRecursionDepth.Count; index++)
             {
+                //snapshot each one
                 RecordPortalViewPass(renderGraph, cameraData, viewsByRecursionDepth, in index);
             }
 
+            //paste them all together
             RecordCompositePass(renderGraph);
 
             //can use frameData to get UniversalCameraData (getting FOV and matrices)
@@ -133,17 +168,24 @@ namespace ProjectPortalMaze.Unity.Runtime
             //draw what the portal sees to a viewport segment matching the rect we pre-calculated
             using (var builder = renderGraph.AddRasterRenderPass("Render Portal View", out PortalDrawPassData passData))
             {
-                //TODO: read rect and camera dim to determine which ResTier
+                //TODO: read rect and camera dimensions to determine which ResTier
                 //TODO: register all textures before entering render pass, give only relevant ones to passdata
+                
+                //set up/assign buffers for the color and depth values of the portal texture
                 passData.portalColorBuffer = renderGraph.CreateTexture(PortalTexDescType.BuildDesc(
                     PortalTexDescType.ResTier.Full, PortalTexDescType.MAIN_COLOR_FORMAT));
 
                 passData.portalDepthStencilBuffer = renderGraph.CreateTexture(PortalTexDescType.BuildDesc(
                     PortalTexDescType.ResTier.Full, PortalTexDescType.DEPTH_STENCIL_FORMAT));
                 
+                //attach the raster render pass to those new buffers
                 builder.SetRenderAttachment(passData.portalColorBuffer, 0, AccessFlags.Write);
                 builder.SetRenderAttachmentDepth(passData.portalDepthStencilBuffer, AccessFlags.Write);
-                builder.SetRenderFunc((PortalDrawPassData data, RasterGraphContext context) => ExecutePortalRenderPass(data, context));
+                
+                //provide what instructions the raster pass should run when the time comes
+                builder.SetRenderFunc((PortalDrawPassData data, RasterGraphContext context) => 
+                    ExecutePortalRenderPass(data, context)
+                );
             }
             
             //- store array of textures before entering the pass - one for each portal view we need
@@ -176,6 +218,16 @@ namespace ProjectPortalMaze.Unity.Runtime
             //Will just have to check the profiler/analysis stuff.
         }
 
+        /// <summary>
+        /// Details how to actually draw the portal to the current render attachments.
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="context"></param>
+        /// <remarks>
+        /// Overview: use the data to render from the perspective of the given portal. This will render to the targets.
+        /// Then use material property blocks to have the portal's material use that new target as its texture to render with.
+        /// This way, the portal still renders the way it has been and auto handles, depth, shape, etc.
+        /// </remarks>
         static void ExecutePortalRenderPass(PortalDrawPassData data, RasterGraphContext context)
         {
             //TODO: once the new matrices have their side planes tightened to the screenspace rect occupying the portal,
@@ -193,6 +245,7 @@ namespace ProjectPortalMaze.Unity.Runtime
                 setInverseMatrices: true); //may be useful for depth reconstruction
             
             //TODO: draw renderer list, which will use the new matrices
+            // context.cmd.DrawRendererList(); //how do we get the list of everything?
             
             //that draws them to a small part of the render attachments, hopefully with the respective shaders respecting depth tests and stuff
             //we'll want to then do a blit to mask it within the shader mesh using some sort of stencil trick 

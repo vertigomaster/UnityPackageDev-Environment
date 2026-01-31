@@ -31,7 +31,7 @@ namespace ProjectPortalMaze.Unity.Runtime
             //update the frame data and build a list of the portal render order, starting with first order portals
             //we want to render them, blit/stencil them, and keep going down to draw the nested parts
             //starting out and going in lets us track the evolving portal shapes in the smae stencil buffer
-            //each portal render will reveal its own portals to the stencil buffer
+            //each portal render will reveal its own portals to the stencil buffer (update: not quite how it works)
             
             //though lighting calcs make be easier if we go the other way, starting deep and going up,
             //using the rendered portal to inform lighting
