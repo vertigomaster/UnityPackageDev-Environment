@@ -24,14 +24,14 @@ namespace IDEK.Tools.Misc.DevEnv.Scripts.Devtest
         }
 
         /// <inheritdoc />
-        public override void Die()
+        public override void OnDeath()
         {
             deathVFX.Play();
             Destroy(gameObject);
         }
 
         /// <inheritdoc />
-        protected override void Grow(float deltaTime)
+        protected override void OnGrow(float deltaTime)
         {
             Size += deltaTime * growthRateOverLifespan.Evaluate(age / lifespan);
         }

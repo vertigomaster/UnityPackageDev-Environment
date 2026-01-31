@@ -28,18 +28,23 @@ namespace IDEK.Tools.Misc.DevEnv.Scripts.Devtest
                 return;
             }
             
-            Grow(Time.deltaTime);
+            _Internal_Grow(Time.deltaTime);
             age += Time.deltaTime;
         }
 
-        public abstract void Die();
+        public abstract void OnDeath();
 
-        protected abstract void Grow(float elapsedTime);
+        protected abstract void OnGrow(float deltaTime);
+
+        private void _Internal_Grow(float deltaTime)
+        {
+            OnGrow(deltaTime);
+        }
 
         private void _Internal_Die()
         {
             Alive = false;
-            Die();
+            OnDeath();
         }
 
         private void _NormalizeGrowthCurve()
