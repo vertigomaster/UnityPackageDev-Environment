@@ -2,6 +2,7 @@
 using IDEK.Tools.GameplayEssentials.Characters.Unity;
 using IDEK.Tools.GameplayEssentials.Core;
 using IDEK.Tools.Logging;
+using IDEK.Tools.ShocktroopUtils.Services;
 using UnityEngine;
 
 namespace IDEK.Tools.GameplayEssentials.Samples.PewPew
@@ -19,8 +20,12 @@ namespace IDEK.Tools.GameplayEssentials.Samples.PewPew
         /// <inheritdoc />
         public override IEnumerable<IPlayerCharacter> GetAllPlayers()
         {
-            var x = RuntimeCharacterRegistry.Singleton.GetAllStates();
-            return x;
+            if (ServiceLocator.TryResolve(out RuntimeCharacterRegistry registry))
+            {
+                return registry.GetAllStates();
+            }
+
+            return new List<IPlayerCharacter>();
         }
 
         /// <inheritdoc />
