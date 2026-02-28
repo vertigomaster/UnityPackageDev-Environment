@@ -1,12 +1,16 @@
 ﻿using IDEK.Tools.ShocktroopExtensions;
 using UnityEngine;
 
-namespace IDEK.Tools.Misc.DevEnv.Scripts.Devtest
+namespace IDEK.PlantGame.DevTest
 {
     public abstract class PlantBase : MonoBehaviour
     {
         public AnimationCurve growthRateOverLifespan;
         public float lifespan = 100f;
+
+#if ODIN_INSPECTOR
+        [Sirenix.OdinInspector.ShowInInspector, Sirenix.OdinInspector.ReadOnly]
+#endif
         protected float age = 0f;
         public bool Alive { get; private set; } = true;
 
