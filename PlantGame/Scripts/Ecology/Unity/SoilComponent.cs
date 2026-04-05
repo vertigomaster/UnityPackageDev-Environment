@@ -34,7 +34,7 @@ namespace IDEK.PlantGame.Ecology
             
             //temp changes 
             //TODO: Maybe make it a better approximation of the heat equation at some point. Overkill to do right now.
-            state.soilTemp.InFahrenheit = state.soilTemp.InFahrenheit.Damp(currentAirTemp, Def.airHeatTransferRate, deltaTime);
+            state.soilTemp.F = state.soilTemp.F.Damp(currentAirTemp, Def.airHeatTransferRate, deltaTime);
             
             //water level change rate dependent on temp, so it is calced after
             state.waterLevel_ml -= Def.CalcWaterLossRate(state.soilTemp_f, state.WaterMlPerCubicMeter) * deltaTime;

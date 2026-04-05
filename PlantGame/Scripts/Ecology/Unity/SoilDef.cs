@@ -57,7 +57,9 @@ namespace IDEK.PlantGame.Ecology
         /// <returns></returns>
         public float CalcWaterLossRate(Temperature temp, Humidity currentHumidity)
         {
-            return waterLossTempFactor_f.Evaluate(temp.InFahrenheit) * waterLossHumidityFactor.Evaluate(CalcHumidity(currentHumidity));
+            float humidityWaterLoss = CalcHumidity(currentHumidity);
+            float tempWaterLoss = waterLossTempFactor_f.Evaluate(temp.F);
+            return tempWaterLoss * humidityWaterLoss;
         }
     }
 }

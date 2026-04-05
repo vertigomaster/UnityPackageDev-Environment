@@ -45,14 +45,14 @@ namespace IDEK.PlantGame.Ecology
             float humidityError = idealSoilHumidity - soil.Humidity;
             
             //not abs since being hot or cold may change things
-            float tempError = idealSoilTemperature - soil.Temperature;
+            float tempError_f = idealSoilTemperature.InFahrenheit - soil.Temperature.InFahrenheit;
             
             //simple for now, will prob set up some curve later that starts to plateaus as nutrition content exceeds needs.
             //for gameplay reasons, we may be using different kinds of nutrients,
             //like some freaky plants doing better when feeding on corpses vs regular fertilizer or acid, etc. 
             float nutritionFactor = baseNutritionNeed > 0 ? soil.state.nutrition / baseNutritionNeed : 1f;
             float humidityFactor = growthNonIdealHumidityFactor.Evaluate(humidityError);
-            float temperatureFactor = growthNonIdealTempFactor_f.Evaluate(tempError);
+            float temperatureFactor = growthNonIdealTempFactor_f.Evaluate(tempError_f);
             
             return humidityFactor * temperatureFactor * nutritionFactor;
         }
