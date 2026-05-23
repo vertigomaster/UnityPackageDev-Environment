@@ -29,6 +29,7 @@ namespace IDEK.PlantGame.Ecology
         [InspectorName("Growth Impact of Relative Non-Ideal Humidity")]
         public AnimationCurve growthNonIdealHumidityFactor;
         
+        //TODO: set up proper logic here
         //Keeping it simple for now, but there may be thresholds for this
         //perhaps it becomes non-viable if the growth rate is calculated to be less than 0?
         public virtual bool IsViableSoil(SoilComponent soil) => true; 

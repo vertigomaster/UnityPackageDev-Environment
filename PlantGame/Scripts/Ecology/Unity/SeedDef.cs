@@ -9,5 +9,6 @@ namespace IDEK.PlantGame.Ecology
         public GameObject plantPrefab;
         public float baseGerminationTime;
         public PlantGrowthConditionsAsset conditions;
+        public PlantGrowthConditions Conditions => conditions.data;
     }
 }
