@@ -25,26 +25,26 @@ namespace IDEK.PlantGame.Ecology
         /// <inheritdoc />
         protected override void Tick(float deltaTickTime)
         {
-            AdvanceState(deltaTickTime);
+            _AdvanceState(deltaTickTime);
         }
 
-        private void AdvanceState(float deltaTime)
+        private void _AdvanceState(float deltaTime)
         {
-            Temperature currentAirTemp = CalcAirTemperature();
+            Temperature currentAirTemp = _CalcAirTemperature();
             
             //temp changes 
             //TODO: Maybe make it a better approximation of the heat equation at some point. Overkill to do right now.
-            state.soilTemp.F = state.soilTemp.F.Damp(currentAirTemp, Def.airHeatTransferRate, deltaTime);
+            state.soilTemp.F = state.soilTemp.F.Damp(currentAirTemp.F, Def.airHeatTransferRate, deltaTime);
             
             //water level change rate dependent on temp, so it is calced after
-            state.waterLevel_ml -= Def.CalcWaterLossRate(state.soilTemp_f, state.WaterMlPerCubicMeter) * deltaTime;
+            state.waterLevel_ml -= Def.CalcWaterLossRate(state.soilTemp, state.WaterMlPerCubicMeter) * deltaTime;
             
             //TODO: anything else?
         }
 
         #endregion
 
-        private Temperature CalcAirTemperature()
+        private Temperature _CalcAirTemperature()
         {
             if (!ServiceLocator.TryResolve(out IClimateDataService climate)) return defaultTemp;
             

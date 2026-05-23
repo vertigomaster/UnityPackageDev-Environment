@@ -61,5 +61,9 @@ namespace IDEK.PlantGame.Ecology
             float tempWaterLoss = waterLossTempFactor_f.Evaluate(temp.F);
             return tempWaterLoss * humidityWaterLoss;
         }
+     
+        //thought better of it; you should instead explicitly create a new temperature from the float
+        //to help avoid accidentally swapping units
+        // public float CalcWaterLossRate(float temp, Humidity currentHumidity, Temperature.Unit unit) => CalcWaterLossRate(new Temperature(temp, Temperature.Unit.Fahrenheit), currentHumidity);
     }
 }
