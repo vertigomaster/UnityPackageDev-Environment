@@ -52,6 +52,5 @@ namespace IDEK.PlantGame.Ecology
             WeatherState localWeatherState = climate.GetWeatherAt(transform.position);
             return localWeatherState.AirTemperature;
         }
-
     }
 }
