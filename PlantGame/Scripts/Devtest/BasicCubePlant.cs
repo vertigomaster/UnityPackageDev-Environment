@@ -1,18 +1,27 @@
-﻿using IDEK.Tools.ShocktroopExtensions;
-using Sirenix.OdinInspector;
-using Unity.Collections;
+﻿using IDEK.PlantGame.Ecology;
+using IDEK.Tools.Coroutines.TaskRoutines;
+using IDEK.Tools.ShocktroopExtensions;
 using UnityEngine;
 
-namespace IDEK.Tools.Misc.DevEnv.Scripts.Devtest
+namespace IDEK.PlantGame.DevTest
 {
     public class BasicCubePlant : PlantBase
     {
 #if ODIN_INSPECTOR
-        [ShowInInspector, Sirenix.OdinInspector.ReadOnly]
+        [Sirenix.OdinInspector.ShowInInspector, Sirenix.OdinInspector.ReadOnly]
 #endif
         public float Size { get; protected set; } = 1f;
+        
+        public SoilComponent CurrentSoil => _currentSoil;
+        [SerializeField]
+        private SoilComponent _currentSoil; //we may change how this gets set later
+        
+        public PlantGrowthConditionsAsset conditionsAsset;
+        public PlantGrowthConditions Conditions => conditionsAsset.data;
 
         public ParticleSystem deathVFX;
+        public bool overrideParticleParent = true;
+        public float deleteVFXAfterDurationDelay = 10f;
         
         #region Overrides of PlantBase
 
@@ -24,16 +33,33 @@ namespace IDEK.Tools.Misc.DevEnv.Scripts.Devtest
         }
 
         /// <inheritdoc />
-        public override void Die()
+        public override void OnDeath()
         {
-            deathVFX.Play();
+            if (deathVFX)
+            {
+                if (overrideParticleParent)
+                {
+                    deathVFX.transform.localPosition = Vector3.zero;
+                    deathVFX.transform.SetParent(transform.parent);
+                    deathVFX.transform.localScale = Vector3.one;
+                    deathVFX.transform.position += Vector3.up * 0.05f;
+                }
+                
+                deathVFX.Play();
+
+                TaskRoutine.WaitUntil(
+                    () => deathVFX.time > deathVFX.main.duration && deathVFX.particleCount <= 0,
+                    () => Destroy(deathVFX.gameObject));
+            }
             Destroy(gameObject);
         }
 
         /// <inheritdoc />
-        protected override void Grow(float deltaTime)
+        protected override void OnGrow(float deltaTime)
         {
-            Size += deltaTime * growthRateOverLifespan.Evaluate(age / lifespan);
+            float baseGrowthRate = growthRateOverLifespan.Evaluate(age / lifespan);
+            float soilGrowthFactor = Conditions.CalcSoilGrowthFactor(_currentSoil);
+            Size += deltaTime * baseGrowthRate * soilGrowthFactor;
         }
 
         #endregion
