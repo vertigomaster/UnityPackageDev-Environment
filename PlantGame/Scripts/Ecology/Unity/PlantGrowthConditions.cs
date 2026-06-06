@@ -21,13 +21,13 @@ namespace IDEK.PlantGame.Ecology
             "\nEvaluated with the current temperature offset in Fahrenheit (because that's what I know)." +
             "\nMultiplied by the base rate.")]
         [InspectorName("Growth Impact of Relative Non-Ideal Temperatures " + Temperature.FAHRENHEIT_SYMBOL)]
-        public AnimationCurve growthNonIdealTempFactor_f;
+        public AnimationCurve growthNonIdealTempFactor_f = AnimationCurve.EaseInOut(0f, 1f, 1f, 1f);
 
         [Tooltip("How the base growth rate is impacted by SOIL humidity (not air humidity), relative to the ideal. " +
             "\nEvaluated with current humidity percentage offset on range (0,1]. " +
             "\nMultiplied by the base rate.")]
         [InspectorName("Growth Impact of Relative Non-Ideal Humidity")]
-        public AnimationCurve growthNonIdealHumidityFactor;
+        public AnimationCurve growthNonIdealHumidityFactor = AnimationCurve.EaseInOut(0f, 1f, 1f, 1f);
         
         //TODO: set up proper logic here
         //Keeping it simple for now, but there may be thresholds for this
@@ -51,7 +51,7 @@ namespace IDEK.PlantGame.Ecology
             //simple for now, will prob set up some curve later that starts to plateaus as nutrition content exceeds needs.
             //for gameplay reasons, we may be using different kinds of nutrients,
             //like some freaky plants doing better when feeding on corpses vs regular fertilizer or acid, etc. 
-            float nutritionFactor = baseNutritionNeed > 0 ? soil.state.nutrition / baseNutritionNeed : 1f;
+            float nutritionFactor = baseNutritionNeed > 0.0f ? (soil.state.nutrition / baseNutritionNeed) : 1f;
             float humidityFactor = growthNonIdealHumidityFactor.Evaluate(humidityError);
             float temperatureFactor = growthNonIdealTempFactor_f.Evaluate(tempError_f);
             

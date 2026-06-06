@@ -207,6 +207,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   lifespan: 8
+  _currentSoil: {fileID: 0}
+  conditionsAsset: {fileID: 11400000, guid: 8dac7f6d44d1efb4aaedb04208b406ab, type: 2}
   deathVFX: {fileID: 4071558328009004753}
   overrideParticleParent: 1
   deleteVFXAfterDurationDelay: 1

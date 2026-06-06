@@ -6,6 +6,7 @@ namespace IDEK.PlantGame.DevTest
     public abstract class PlantBase : MonoBehaviour
     {
         public AnimationCurve growthRateOverLifespan;
+        [Min(0.0001f)]
         public float lifespan = 100f;
 
 #if ODIN_INSPECTOR

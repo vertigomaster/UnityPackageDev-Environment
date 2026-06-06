@@ -25,14 +25,14 @@ namespace IDEK.PlantGame.Ecology
             "\nEvaluated with the current temperature in Fahrenheit (because that's what I know)." +
             "\nMultiplied by the base rate.")]
         [InspectorName("Water Loss Temperature Factor " + Temperature.FAHRENHEIT_SYMBOL)]
-        public AnimationCurve waterLossTempFactor_f;
+        public AnimationCurve waterLossTempFactor_f = AnimationCurve.EaseInOut(0f, 1f, 1f, 1f);
 
         [FormerlySerializedAs("waterLossSaturationFactor")]
         [Tooltip("How the base loss rate is impacted by SOIL humidity (not air humidity). " +
             "\nEvaluated with current humidity percentage on range (0,1]. " +
             "\nMultiplied by the base rate.")]
         [InspectorName("Water Loss Saturation Factor")]
-        public AnimationCurve waterLossHumidityFactor;
+        public AnimationCurve waterLossHumidityFactor = AnimationCurve.EaseInOut(0f, 1f, 1f, 1f);
 
         [Tooltip("Abstracted rate at which air temp affects this soil's temp, and vice versa." +
             "\n Currently used as a lerp factor" +

@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 10194256}
   - component: {fileID: 10194255}
   - component: {fileID: 10194254}
+  - component: {fileID: 10194258}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -227,6 +228,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &10194258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10194253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 457816f3d85146e39bc64b09a802061a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ticker:
+    tickEveryFrame: 0
+    staggerDelay: 0
+    _tickTime: 0.1
+  state:
+    soilTemp:
+      _rawTemperatureKelvin: 294.2611
+      defaultDisplayUnit: 0
+      editorDisplayValue: 70
+    soilMass_kg: 600000
+    soilVolume_m3: 10000
+    waterLevel_ml: 10
+    nutrition: 10
+  defAsset: {fileID: 11400000, guid: 11d5d85a42f0eed4d8e4645895fce760, type: 2}
 --- !u!1 &65697574
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,6 +468,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   lifespan: 10
+  _currentSoil: {fileID: 10194258}
+  conditionsAsset: {fileID: 11400000, guid: 8dac7f6d44d1efb4aaedb04208b406ab, type: 2}
   deathVFX: {fileID: 321477786}
   overrideParticleParent: 1
   deleteVFXAfterDurationDelay: 1
@@ -669,6 +698,58 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 607082915}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &616600063
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 616600065}
+  - component: {fileID: 616600064}
+  m_Layer: 0
+  m_Name: '[Climate] ClimateService'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &616600064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616600063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7e6a637c3e548faad275958cab39bef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  constantWeatherState:
+    _temperature:
+      _rawTemperatureKelvin: 294.2611
+      defaultDisplayUnit: 0
+      editorDisplayValue: 70
+    _airPressure: 1
+    _airHumidity:
+      humidity: 0.5
+--- !u!4 &616600065
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616600063}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.69603, y: 0, z: -14.34584}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &857701443
 GameObject:
   m_ObjectHideFlags: 0
@@ -1112,6 +1193,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7505577099081050193, guid: e946ea0c1e1d4e24684ad9f5ff913e5a,
         type: 3}
+      propertyPath: _currentSoil
+      value: 
+      objectReference: {fileID: 10194258}
+    - target: {fileID: 7505577099081050193, guid: e946ea0c1e1d4e24684ad9f5ff913e5a,
+        type: 3}
       propertyPath: growthRateOverLifespan.m_Curve.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -1313,6 +1399,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube Plant V1_001
       objectReference: {fileID: 0}
+    - target: {fileID: 7505577099081050193, guid: e946ea0c1e1d4e24684ad9f5ff913e5a,
+        type: 3}
+      propertyPath: _currentSoil
+      value: 
+      objectReference: {fileID: 10194258}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1485,6 +1576,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   lifespan: 15
+  _currentSoil: {fileID: 10194258}
+  conditionsAsset: {fileID: 11400000, guid: 8dac7f6d44d1efb4aaedb04208b406ab, type: 2}
   deathVFX: {fileID: 607082916}
   overrideParticleParent: 1
   deleteVFXAfterDurationDelay: 1
@@ -1645,6 +1738,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   lifespan: 10.5
+  _currentSoil: {fileID: 10194258}
+  conditionsAsset: {fileID: 11400000, guid: 8dac7f6d44d1efb4aaedb04208b406ab, type: 2}
   deathVFX: {fileID: 935872011}
   overrideParticleParent: 1
   deleteVFXAfterDurationDelay: 1
@@ -1886,6 +1981,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   lifespan: 3
+  _currentSoil: {fileID: 10194258}
+  conditionsAsset: {fileID: 11400000, guid: 8dac7f6d44d1efb4aaedb04208b406ab, type: 2}
   deathVFX: {fileID: 1649918423}
   overrideParticleParent: 1
   deleteVFXAfterDurationDelay: 1
@@ -2017,6 +2114,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube Plant V1
       objectReference: {fileID: 0}
+    - target: {fileID: 7505577099081050193, guid: e946ea0c1e1d4e24684ad9f5ff913e5a,
+        type: 3}
+      propertyPath: _currentSoil
+      value: 
+      objectReference: {fileID: 10194258}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2038,3 +2140,4 @@ SceneRoots:
   - {fileID: 2129223953}
   - {fileID: 1679630438}
   - {fileID: 1713680612}
+  - {fileID: 616600065}

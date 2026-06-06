@@ -195,6 +195,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 152411880488215235, guid: af462a796aa00a34488d69494c8a0be2,
+        type: 3}
+      propertyPath: _owner
+      value: 
+      objectReference: {fileID: 1267444172}
     - target: {fileID: 827317895449763745, guid: af462a796aa00a34488d69494c8a0be2,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -229,6 +234,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: '[Avatar] Gordon'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2920137906124629743, guid: af462a796aa00a34488d69494c8a0be2,
+        type: 3}
+      propertyPath: maxVelocity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2920137906124629743, guid: af462a796aa00a34488d69494c8a0be2,
+        type: 3}
+      propertyPath: motionIntentMultiplier
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3207878351891886122, guid: af462a796aa00a34488d69494c8a0be2,
         type: 3}
@@ -325,6 +340,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af462a796aa00a34488d69494c8a0be2, type: 3}
+--- !u!1 &1267444172 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5183544060009462237, guid: a16539bfa9b2c8b42b9ba12b43b80e00,
+    type: 3}
+  m_PrefabInstance: {fileID: 992612159}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1459860335
 GameObject:
   m_ObjectHideFlags: 0
