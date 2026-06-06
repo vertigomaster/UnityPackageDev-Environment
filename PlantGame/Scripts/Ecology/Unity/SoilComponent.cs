@@ -1,4 +1,5 @@
-﻿using IDEK.Tools.GameplayEssentials.Updating;
+﻿using IDEK.PlantGame.Ecology.Unity;
+using IDEK.Tools.GameplayEssentials.Updating;
 using IDEK.Tools.ShocktroopUtils;
 using IDEK.Tools.ShocktroopUtils.Services;
 
@@ -46,7 +47,7 @@ namespace IDEK.PlantGame.Ecology
 
         private Temperature _CalcAirTemperature()
         {
-            if (!ServiceLocator.TryResolve(out IClimateDataService climate)) return defaultTemp;
+            if (!ServiceLocator.TryResolve(out IUnityClimateDataService climate)) return defaultTemp;
             
             WeatherState localWeatherState = climate.GetWeatherAt(transform.position);
             return localWeatherState.AirTemperature;
