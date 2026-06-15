@@ -1,5 +1,7 @@
-﻿using IDEK.Tools.ShocktroopExtensions;
+﻿using IDEK.PlantGame.Ecology;
+using IDEK.Tools.ShocktroopExtensions;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace IDEK.PlantGame.DevTest
 {
@@ -8,6 +10,10 @@ namespace IDEK.PlantGame.DevTest
         public AnimationCurve growthRateOverLifespan;
         [Min(0.0001f)]
         public float lifespan = 100f;
+        
+        [FormerlySerializedAs("_currentSoil")]
+        [SerializeField]
+        public SoilComponent currentSoil; //we may change how this gets set later
 
 #if ODIN_INSPECTOR
         [Sirenix.OdinInspector.ShowInInspector, Sirenix.OdinInspector.ReadOnly]

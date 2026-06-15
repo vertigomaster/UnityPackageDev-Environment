@@ -42,6 +42,9 @@ namespace IDEK.PlantGame.Ecology
         /// <returns></returns>
         public virtual float CalcSoilGrowthFactor(SoilComponent soil)
         {
+            if (soil == null)
+                throw new System.ArgumentNullException(nameof(soil));
+            
             //both values should be bound [0,1), so max error is 1
             float humidityError = idealSoilHumidity - soil.Humidity;
             

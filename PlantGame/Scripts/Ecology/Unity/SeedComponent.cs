@@ -1,7 +1,10 @@
 ﻿#if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
 #endif
+using System;
 using IDEK.Tools.Coroutines.TaskRoutines;
+using IDEK.Tools.Logging;
+using IDEK.Tools.ShocktroopUtils.Services;
 using UnityEngine;
 
 namespace IDEK.PlantGame.Ecology
@@ -60,16 +63,32 @@ namespace IDEK.PlantGame.Ecology
         {
             //TODO: germinate first? or is that a seed state of the plant?
 
-            if(_germinationRoutine == null) return;
-            if(_germinationRoutine.IsRunning) return;
+            if(_germinationRoutine?.IsRunning == true) return;
             
             _germinationRoutine = _GerminateRoutine().OnFinish(() => {
                 _germinationRoutine = null;
                 //set up/spawn the plant object associated with this seed
-                Instantiate(SeedData.plantPrefab,
+                var plant = Instantiate(SeedData.plantPrefab,
                     plantingPosition,
                     plantingRotation,
                     potentialDirt.transform);
+                
+                //may want new types to make it more data-oriented, who knows.
+                var plantService = ServiceLocator.Resolve<IPlantingService>();
+                if (plantService == null)
+                {
+                    ConsoleLog.LogError($"Failed to resolve IPlantingService for planting seed {name} into soil {potentialDirt.name} at position {plantingPosition}");
+                }
+                else
+                {
+                    plantService.Plant(plant, potentialDirt.GetComponent<SoilComponent>(), this);
+                    
+                    ConsoleLog.Log($"Planted seed {name} into soil {potentialDirt.name} at position {plantingPosition}");
+                }
+                //use the service, it handles the bridge
+                // PlantBase plantComp = plant.GetComponent<PlantBase>();
+                // if (plantComp == null)
+                //     throw new System.NullReferenceException("PlantBase component not found on instantiated plant");
             });
 
             IsPlanted = true;

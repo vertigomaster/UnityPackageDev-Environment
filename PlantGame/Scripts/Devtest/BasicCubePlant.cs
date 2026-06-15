@@ -12,10 +12,6 @@ namespace IDEK.PlantGame.DevTest
 #endif
         public float Size { get; protected set; } = 1f;
         
-        public SoilComponent CurrentSoil => _currentSoil;
-        [SerializeField]
-        private SoilComponent _currentSoil; //we may change how this gets set later
-        
         public PlantGrowthConditionsAsset conditionsAsset;
         public PlantGrowthConditions Conditions => conditionsAsset.data;
 
@@ -58,7 +54,7 @@ namespace IDEK.PlantGame.DevTest
         protected override void OnGrow(float deltaTime)
         {
             float baseGrowthRate = growthRateOverLifespan.Evaluate(age / lifespan);
-            float soilGrowthFactor = Conditions.CalcSoilGrowthFactor(_currentSoil);
+            float soilGrowthFactor = Conditions.CalcSoilGrowthFactor(currentSoil);
             Size += deltaTime * baseGrowthRate * soilGrowthFactor;
         }
 

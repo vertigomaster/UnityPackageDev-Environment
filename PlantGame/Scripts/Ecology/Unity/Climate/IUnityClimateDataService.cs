@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+﻿using IDEK.Tools.ShocktroopUtils.Services;
+using UnityEngine;
 
 namespace IDEK.PlantGame.Ecology.Unity
 {
     /// <summary>
     /// TODO
     /// </summary>
-    public interface IUnityClimateDataService
+    public interface IUnityClimateDataService : IService
     {
         /// <summary>
         /// Gets the weather at the given world position 
